@@ -1,0 +1,48 @@
+{% extends "navBase.html" %}
+{% block title %} Account Details {% endblock %}
+{% block content %}
+<html>
+    <body>
+        <h3 align="center">My Account</h3><br><br>
+        <h3 align="left">Personal Details</h3><br><br><br>
+
+        <h3><b>Name: </b></h5>
+        {% if accountDetails.lastName == None %}    
+        <h3>{{ accountDetails.firstName }} </h3><br>
+        {% else %}
+        <h3>{{ accountDetails.firstName }} {{ accountDetails.lastName }}</h3><br>
+        {% endif %}
+
+        <h3><b>Email Address: </b></h5>
+        <h3>{{ accountDetails.email }} </h3><br>
+
+        <h3><b>Mobile: </b></h5>
+        {% if accountDetails.mobileNo == None %}
+        <h3> - </h3>      
+        {% else %}
+        <h3>{{ accountDetails.mobileNo }} </h3><br><br><br>
+        {% endif %}
+
+        <h3 align="right">Shipping and Payment Details</h3><br><br><br>
+        
+        <h3 align="right"><b>Shipping Address: </b> </h5>
+        {% if accountDetails.addressHouseNo == None %}
+        <h3 align="right"> - </h3>      
+        {% else %}
+        <h3 align="right">{{ accountDetails.addressHouseNo }} {{accountDetails.addressStreetName }}, {{accountDetails.addressSuburb }}, {{accountDetails.addressCity }} {{accountDetails.addressPostCode }}</h3><br>
+        {% endif %}
+
+        <h3 align="right"><b>Payment Details: </b></h5>
+        {% if accountDetails.paymentCardNo1 == None %}
+        <h3 align="right"> - </h3>      
+        {% else %}
+        <h3 align="right">Visa Mastercard </h3><br>
+        <h3 align="right">**** **** **** {{accountDetails.paymentCardNo4 }} </h3><br>
+        <h3 align="right">Exp: {{accountDetails.paymentCardExp }}</h3><br>
+        {% endif %}
+
+        <button type="button" id="editAccountDetails"><a href="/editAccountDetails">Edit account Details</a></button>
+           
+    </body>
+</html>
+{% endblock %} 
