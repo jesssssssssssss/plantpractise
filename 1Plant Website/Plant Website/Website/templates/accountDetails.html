@@ -7,7 +7,7 @@
         <h3 align="left">Personal Details</h3><br><br><br>
 
         <h3><b>Name: </b></h5>
-        {% if accountDetails.lastName == None %}    
+        {% if accountDetails.lastName == None or accountDetails.lastName == "None" %}    
         <h3>{{ accountDetails.firstName }} </h3><br>
         {% else %}
         <h3>{{ accountDetails.firstName }} {{ accountDetails.lastName }}</h3><br>
@@ -17,7 +17,7 @@
         <h3>{{ accountDetails.email }} </h3><br>
 
         <h3><b>Mobile: </b></h5>
-        {% if accountDetails.mobileNo == None %}
+        {% if accountDetails.mobileNo == None or accountDetails.mobileNo == "None" %}
         <h3> - </h3>      
         {% else %}
         <h3>{{ accountDetails.mobileNo }} </h3><br><br><br>
@@ -26,22 +26,22 @@
         <h3 align="right">Shipping and Payment Details</h3><br><br><br>
         
         <h3 align="right"><b>Shipping Address: </b> </h5>
-        {% if accountDetails.addressHouseNo == None %}
-        <h3 align="right"> - </h3>      
+        {% if accountDetails.addressHouseNo == None or accountDetails.addressHouseNo == "None" %}
+        <h3 align="right"> - </h3>  
         {% else %}
         <h3 align="right">{{ accountDetails.addressHouseNo }} {{accountDetails.addressStreetName }}, {{accountDetails.addressSuburb }}, {{accountDetails.addressCity }} {{accountDetails.addressPostCode }}</h3><br>
         {% endif %}
 
         <h3 align="right"><b>Payment Details: </b></h5>
-        {% if accountDetails.paymentCardNo1 == None %}
+        {% if accountDetails.paymentCardNo == None or accountDetails.paymentCardNo == "None" %}
         <h3 align="right"> - </h3>      
         {% else %}
         <h3 align="right">Visa Mastercard </h3><br>
-        <h3 align="right">**** **** **** {{accountDetails.paymentCardNo4 }} </h3><br>
+        <h3 align="right">{{ masked_card }}</h3><br>
         <h3 align="right">Exp: {{accountDetails.paymentCardExp }}</h3><br>
         {% endif %}
 
-        <button type="button" id="editAccountDetails"><a href="/editAccountDetails">Edit account Details</a></button>
+        <button type="button" id="editAccountDetails"><a href="/editAccountDetails">Edit Account Details</a></button>
            
     </body>
 </html>

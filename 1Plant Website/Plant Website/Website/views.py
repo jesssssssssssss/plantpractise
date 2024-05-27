@@ -46,24 +46,41 @@ def accountDetails():
 
     # Fetch account details from the AccountDetails table
     accountDetails = db.session.query(AccountDetails).filter_by(userId=userId).first()
+
+    if accountDetails.paymentCardNo:
+        masked_card = "**** **** **** " + accountDetails.paymentCardNo[-4:]
+    else:
+        masked_card = None
     
 
-    return render_template('accountDetails.html', user=user, accountDetails=accountDetails)
+    return render_template('accountDetails.html', user=user, accountDetails=accountDetails, masked_card=masked_card)
 
-@views.route('/editAccountDetails', methods=['POST', 'GET'])
+@views.route('/editAccountDetails', methods=['GET', 'POST'])
 def editAccountDetails():
-
-
+       
     if request.method == 'POST':
-        firstName = request.form.get('firstName')
-        lastName = request.form.get('lastName')
+        user_id = current_user.id
+        account_details = AccountDetails.query.filter_by(userId=user_id).first()
 
-        userId = current_user.id
-        user = User.query.filter_by(userId=userId).first()
+        account_details.firstName = request.form['firstName']
+        account_details.lastName = request.form['lastName']
+        account_details.email = request.form['email']
+        account_details.mobileNo = request.form['mobileNo']
+        account_details.addressHouseNo = request.form['addressHouseNo']
+        account_details.addressStreetName = request.form['addressStreetName']
+        account_details.addressSuburb = request.form['addressSuburb']
+        account_details.addressCity = request.form['addressCity']
+        account_details.addressPostCode = request.form['addressPostCode']
+        account_details.paymentCardNo = request.form['paymentCardNo']
+        account_details.paymentCardCvc = request.form['paymentCardCvc']
+        account_details.paymentCardExp = request.form['paymentCardExp']
 
-        
-
-    return render_template("editAccountDetails.html", user=current_user, accountDetails=accountDetails) 
+        db.session.commit()
+        flash('Account details updated successfully', category='success')
+        return redirect(url_for('views.accountDetails'))
+    
+    else:
+        return render_template("editAccountDetails.html", user=current_user)
 
 @views.route('/completeEdit', methods=['POST', 'GET'])
 def completeEdit():
