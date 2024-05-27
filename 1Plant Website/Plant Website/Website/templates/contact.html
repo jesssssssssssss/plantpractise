@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <h2>Contact</h2>
+
+    <!--Recieving and displaying flash messages-->
+    {% for message in form.name.errors %} <!--Name -->
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% for message in form.email.errors %} <!--Email-->
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% for message in form.subject.errors %} <!--Subject-->
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% for message in form.message.errors %} <!--Message-->
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    <!--Form-->
+    <form action="{{ url_for('contact')}}" method=post>
+        {{ form.hidden_tag() }} <!--Inserting hidden tag to protect against CSRF attacks-->
+        {{ form.name.label }}
+        {{ form.name }}
+        {{ form.email.label }}
+        {{ form.email }}
+        {{ form.subject.label }}
+        {{ form.subject }}
+        {{ form.message.label }}
+        {{ form.message }}
+        {{ form.submit }}
+    </form>
+{% endblock %}
