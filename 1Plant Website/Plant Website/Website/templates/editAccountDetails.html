@@ -1,56 +1,53 @@
 {% extends "navBase.html" %}
 {% block title %} Account Details {% endblock %}
-<body>
-{% with message = get_flashed_messages() %}
-{% if messages %}
-{% for message in messages %}
-<div>
-    {{message}}
-</div>
-{% endfor %}
-{% endif %}
-{% endwith %}
+{% block content %}
+<form method="POST" action="{{ url_for('views.editAccountDetails') }}">
+    <br><br>
+    <h3 align="center">My Account</h3><br><br>
+    <h3 align="left">Personal Details</h3><br><br><br>
 
-        {% block content %}
-        {% for row in rows %}
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" value="{{ user.AccountDetails.firstName }}" required/><br>
+        
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" value="{{ user.AccountDetails.lastName }}"/><br>
 
-        <form action="/completeEdit" method="get">
-            <br><br>
-            <h3 align="center">My Account</h3><br><br>
-            <h3 align="left">Personal Details</h3><br><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ user.AccountDetails.email }}"/><br>
 
-            <input type="hidden" name="UsrID" value={{row[0]}} />
 
-            <div class="form-group"> 
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" value={{row[1]}}/> 
-                <input type="text" class="form-control" id="lastName" name="lastName" value={{row[2]}}/>
-            </div>
+        <label for="mobileNo">Mobile Number:</label>
+        <input type="text" id="mobileNo" name="mobileNo" value="{{ user.AccountDetails.mobileNo }}"/><br>
+         <br><br>
 
-            <div class="form-group"> 
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value={{row[3]}}/>
-            </div>
+    <h3>Shipping and Payment Details</h3><br><br><br>
 
-            <div class="form-group"> 
-                <label for="mobileNo">Mobile</label>
-                <input type="text" class="form-control" id="mobileNo" name="mobileNo" value={{row[4]}}/>
-            </div><br><br>
+        <label for="addressHouseNo">House/Unit number:</label>
+        <input type="text" id="addressHouseNo" name="addressHouseNo" value="{{ user.AccountDetails.addressHouseNo }}"/><br>
 
-            <h3>Shipping and Payment Details</h3><br><br><br>
+        <label for="addressStreetName">Street Name:</label>
+        <input type="text" id="addressStreetName" name="addressStreetName" value="{{ user.AccountDetails.addressStreetName }}"/><br>
 
-            <div class="form-group"> 
-                <label for="Shipping Address">Shipping Address</label>
-                <input type="text" class="form-control" id="addressHouseNo" name="addressHouseNo" value={{row[5]}}/>
-                <input type="text" class="form-control" id="addressStreetName" name="addressStreetName" value={{row[6]}}/>
-                <input type="text" class="form-control" id="addressSuburb" name="addressSuburb" value={{row[7]}}/>
-                <input type="text" class="form-control" id="addressCity" name="addressCity" value={{row[8]}}/>
-                <input type="text" class="form-control" id="addressPostCode" name="addressPostCode" value={{row[9]}}/>
+        <label for="addressSuburb">Suburb:</label>
+        <input type="text" id="addressSuburb" name="addressSuburb" value="{{ user.AccountDetails.addressSuburb }}"><br>
 
-            </div>
-            <br>
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-        </form>
-        {% endfor %}
+        <label for="addressCity">City:</label>
+        <input type="text" id="addressCity" name="addressCity" value="{{ user.AccountDetails.addressCity }}"><br>
+
+        <label for="addressPostCode">Postcode:</label>
+        <input type="text" id="addressPostCode" name="addressPostCode" value="{{ user.AccountDetails.addressPostCode }}"><br><br><br>
+
+        <label for="paymentCardNo">Payment Information:</label>
+        <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}"><br> 
+
+        <label for="paymentCardCvc">CVC:</label>
+        <input type="text" id="paymentCardCvc" name="paymentCardCvc" value="{{ user.AccountDetails.paymentCardCvc }}"><br> 
+
+        <label for="paymentCardExp">Expiration Date:</label>
+        <input type="text" id="paymentCardExp" name="paymentCardExp" value="{{ user.AccountDetails.paymentCardExp }}"><br><br><br>
+
+
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 {% endblock %} 
-</body>
