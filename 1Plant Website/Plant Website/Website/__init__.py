@@ -10,6 +10,7 @@ DB_NAME = "database.db"
 
 # NEW ADDITIONS ^^^
 
+#Initialise Mail instance
 mail = Mail()
 
 def create_app(mail_instance=None):
@@ -18,10 +19,23 @@ def create_app(mail_instance=None):
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{path.join(app.root_path, DB_NAME)}' #
     db.init_app(app) # NEW ADDITIONS < ^ 
     
+    #Configuring Flask-Mail for Outlook
+    app.config['MAIL_SERVER'] = 'smtp-mail.outlook.com' #Where outlook emails are hosted from
+    app.config['MAIL_PORT'] = 587
+    app.config['MAIL_USE_TLS'] = True
+    app.config['MAIL_USE_SSL'] = False
+    app.config['MAIL_USERNAME'] = 'SendUsFeedback@outlook.com'
+    app.config['MAIL_PASSWORD'] = 'plantsRawesome'
+    
+
     if mail_instance:
-        mail_instance.init_app(app) #Initialise the Mail instance with the app
+        mail_instance.init_app(app)
     else:
-        mail = Mail(app) #Create a new Mail instance if one is not provided
+        global mail
+        mail.init_app(app)
+        '''mail_instance.init_app(app) #Initialise the Mail instance with the app
+    else:
+        mail = Mail(app) #Create a new Mail instance if one is not provided'''
 
     #Importing blueprints
     from .views import views
