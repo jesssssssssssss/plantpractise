@@ -14,9 +14,7 @@ def shop():
 def aboutUs():
     return "<p>About Us"
 
-@auth.route('/contact')
-def contact():
-    return "<p>Contact"
+
 
 @auth.route('/login', methods=['GET', 'POST']) # NEW ADDITION BEGIN
 def login():
