@@ -3,57 +3,55 @@
     <head>
         <meta charset="utf-8"/>
         <meta name ="viewport" content="width-device-width, initial-scale=1"/>
-
-        <!--Bootstrap links-->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"/>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      crossorigin="anonymous"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navBase.css') }}">
+        <link rel="stylesheet" href="https://use.typekit.net/btr0hfq.css">
 
         <!--creating a block template that children will be able to override-->
-        <title>{% block title %}Home{% endblock %}</title>
+        <title>{% block title %}Nav Base{% endblock %}</title>
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="navBar">
 
-            <div class="collapse navbar-collapse" id="navbar">
+            <div class="navBarMain">
                     <!--Nav logo-->
-                    <a class="navbar-logo" href="/"> <!--linking to the home page-->
-                        <img width="130px" height="70px" src="{{ url_for('static', filename='logo.png') }}">
+                    <a class="navBarLogoIcon" href="/"> <!--linking to the home page-->
+                        <img height="150px" src="{{ url_for('static', filename='iconLogo.png') }}">
                     </a>
-                    <a class="navbar-icon" href="/accountDetails"><!--need to link to page-->
-                        <img width="130px" height="70px" src="{{ url_for('static', filename='accountIcon.png') }}">
+
+                    <a class="navBarLogoIcon" href="/shop"><!--need to link to page-->
+                        <img height="100px" src="{{ url_for('static', filename='typographicLogo.png') }}">
                     </a>
-                    <div class="navbar-nav ml-auto"> <!--Aligning text to the right-->
-                    <!--Nav items-->
-                    <a class="nav-item nav-link" id="shop" href="/shop">Shop</a>
-                    <a class="nav-item nav-link" id="aboutUs" href="/about-us">About Us</a>
-                    <a href="{{ url_for('contact.contact') }}">Contact</a>
-                    
+
+                    <div class="navBarCategories"> 
+                        <!--Nav items-->
+                        <a class="navItem" id="shop" href="/shop">Shop</a>
+                        <a class="navItem" id="aboutUs" href="/about-us">About Us</a>
+                        <a class="navItem" id="contact" href="/contact">Contact</a>
+                    </div>
 
                     
-                    {% if user.is_authenticated %} 
+
+
+
+                    {% if user.is_authenticated %} <!--NEW ADDITION-->
                     <!--Nav icons-->
                     <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>  
+
                     <a class="navbar-cart" href="#"><!--need to link to cart page-->
                         <img width="130px" height="70px" src="{{ url_for('static', filename='cartIcon.jpg')  }}">
                     </a>
-                    <a class="navbar-icon" href="#"><!--need to linK to account page-->
+
+                    <a class="navbar-icon" href="/accountDetails">
                         <img width="130px" height="70px" src="{{ url_for('static', filename='accountIcon.png') }}">
                     </a>
+
                     {% else %}
-                    <a class="nav-item nav-link" id="login" href="/login">Login</a> 
-                    <a class="nav-item nav-link" id="signUp" href="/signUp">Sign up</a> 
+                    <a class="nav-item nav-link" id="login" href="/login">Login</a> <!--NEW ADDITION-->
+                    <a class="nav-item nav-link" id="signUp" href="/signUp">Sign up</a> <!--NEW ADDITION-->
                     {% endif %}
+
+
                 </div>
             </div>
         </nav>
