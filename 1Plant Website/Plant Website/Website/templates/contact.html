@@ -5,12 +5,12 @@
 
     <h2>Contact</h2>
     <hr>
-    <p>To get in touch with us for further information or queries, please fill in the information below.</p>
 
     <!--Success Message-->
     {% if success %}
         <p>Thank you for your message. We'll get back to you shortly.</p>
     {% else %}
+        <p>To get in touch with us for further information or queries, please fill in the information below.</p>
 
     <!--Recieving and displaying flash messages-->
     {% for message in form.name.errors %} <!--Name -->
