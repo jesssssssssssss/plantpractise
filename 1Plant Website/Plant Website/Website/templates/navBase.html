@@ -41,7 +41,7 @@
                     
 
                     
-                    {% if user.is_authenticated %} <!--NEW ADDITION-->
+                    {% if user.is_authenticated %} 
                     <!--Nav icons-->
                     <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>  
                     <a class="navbar-cart" href="#"><!--need to link to cart page-->
@@ -51,8 +51,8 @@
                         <img width="130px" height="70px" src="{{ url_for('static', filename='accountIcon.png') }}">
                     </a>
                     {% else %}
-                    <a class="nav-item nav-link" id="login" href="/login">Login</a> <!--NEW ADDITION-->
-                    <a class="nav-item nav-link" id="signUp" href="/signUp">Sign up</a> <!--NEW ADDITION-->
+                    <a class="nav-item nav-link" id="login" href="/login">Login</a> 
+                    <a class="nav-item nav-link" id="signUp" href="/signUp">Sign up</a> 
                     {% endif %}
                 </div>
             </div>

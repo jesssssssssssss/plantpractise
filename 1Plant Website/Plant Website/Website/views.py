@@ -9,15 +9,13 @@ import sqlite3 as sql
 
 views = Blueprint('views',__name__)
 
-@views.route('/', methods=['GET', 'POST']) # second parameter - NEW ADDITION
+@views.route('/', methods=['GET', 'POST']) 
 def home():
-    return render_template("home.html", user=current_user) # second parameter - NEW ADDITION
+    return render_template("home.html", user=current_user) 
 
 @views.route('/shop')
 def shop():
     return render_template('shop.html', user=current_user)
-
-# NEW ADDITIONS v
 
 @views.route('/viewCart', methods=['GET', 'POST'])
 @login_required
@@ -109,82 +107,5 @@ def completeEdit():
             
         finally:
             return render_template("completeEdit.html", msg=msg)
-            
-
-''' 
-First attempt:
-
-    con = sql.connect("database.db")
-    con.row_factory = sql.Row
-    cur=con.cursor()
-    cur.execute("select * from AccountDetails where userId=?")
-    rows=cur.fetchall()
-    return render_template("editAccountDetails.html", rows=rows)
-
-signup format:
-
-@views.route('/editAccountDetails')
-def editAccountDetails():
-    if request.method == 'POST':
-        firstName = request.form.get('firstName')
-        lastName = request.form.get('lastName')
-        email = request.form.get('email')
-        mobileNo = request.form.get('mobileNo')  
-        addressHouseNo = request.form.get('addressHouseNo')
-        addressStreetName = request.form.get('addressStreetName')
-        addressSuburb = request.form.get('addressSuburb')
-        addressCity = request.form.get('addressCity')
-        addressPostCode = request.form.get('addressPostCode')
-
-        userId = current_user.id
-        user = User.query.filter_by(email=email).first()
-
-        if user: 
-            flash('email already exist', category='error')
-
-        elif len(email) < 4:
-            flash('Email must be more than 3 characters.', category='error')
-            
-        elif len(firstName) < 2:
-            flash('First name must be more than 1 character.', category='error')
-            
-        elif password1 != password2:
-            flash('Passwords don\'t match.', category='error')
-            
-        elif len(password1) < 7:
-            flash('Password too short', category='error')
-            
-        else:
-            new_user=User(email=email, firstName=firstName, password=generate_password_hash(password1, method='pbkdf2:sha256'))
-            db.session.add(new_user)
-            db.session.commit()
-            
-            userId = new_user.id
-            newAccDetails = AccountDetails(userId=userId, firstName=firstName, email=email)
-            db.session.add(newAccDetails)
-            db.session.commit()
-
-            login_user(new_user, remember=True)
-            flash('Account created!', category='success')
-            return redirect(url_for('views.home', new_user=current_user))
-
-
-    return render_template("editAccountDetails.html", user=current_user) '''
-
-
-
-''' @views.route('/login') # NEW ADDITION 
-def login():
-    return render_template('login.html')''' 
-
-
-''' @views.route('/accountDetails')
-@login_required
-def accountDetails():
-    con = sql.connect("database.db")
-    con.row_factory = sql.Row
-    cur=con.cursor()
-    cur.execute("Select * from AccountDetails")
-    rows=cur.fetchall()
-    return render_template('accountDetails.html', rows=rows, user=current_user) '''
+        
 
