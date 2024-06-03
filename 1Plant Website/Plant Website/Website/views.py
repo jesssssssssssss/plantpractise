@@ -81,7 +81,7 @@ def editAccountDetails():
             if len(mobileNo) < 5:
                 flash("Mobile num must be at least 5 digits", category="error")
                 return redirect(url_for('views.editAccountDetails'))
-
+     
             else:
 
                 account_details.firstName = firstName

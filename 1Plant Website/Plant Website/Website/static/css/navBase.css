@@ -1,0 +1,25 @@
+.navBar{
+    background-color: #C0CEC1;
+}
+
+
+.navBarMain{
+    display: flex;
+}
+
+.navBarCategories{
+    display: flex;
+}
+
+
+.navItem{
+    font-family: abril-titling, serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #596C55;
+    font-size: 25pt;
+    text-decoration: none;
+
+    margin-right: 5%;
+    margin-left: 5%;
+}

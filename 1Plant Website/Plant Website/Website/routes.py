@@ -13,6 +13,7 @@ bp = Blueprint('contact', __name__)
 @bp.route('/contact', methods=['GET','POST'])
 def contact():
     form = ContactForm()
+    success = False #Initalising success as flase
  
     if request.method == 'POST':
         #If the inputs are not valid an error will flash and the page will be reloaded
