@@ -16,7 +16,7 @@ def aboutUs():
 
 
 
-@auth.route('/login', methods=['GET', 'POST']) # NEW ADDITION BEGIN
+@auth.route('/login', methods=['GET', 'POST']) 
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -86,4 +86,3 @@ def signUp():
     return render_template("signUp.html", user=current_user) 
 
 
-# NEW ADDITION END
