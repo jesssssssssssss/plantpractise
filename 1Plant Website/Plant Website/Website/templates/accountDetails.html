@@ -3,6 +3,16 @@
 {% block content %}
 <html>
     <body>
+        {% with messages = get_flashed_messages(with_categories=true) %} 
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{category}}"> {{message}} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <br><br>
         <h3 align="center">My Account</h3><br><br>
         <h3 align="left">Personal Details</h3><br><br><br>
 

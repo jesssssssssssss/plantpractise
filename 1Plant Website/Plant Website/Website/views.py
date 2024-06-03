@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from . import db 
 import json 
 import sqlite3 as sql
-#NEW ADDITIONS^^
+import re
 
 views = Blueprint('views',__name__)
 
@@ -60,25 +60,50 @@ def editAccountDetails():
         user_id = current_user.id
         account_details = AccountDetails.query.filter_by(userId=user_id).first()
 
-        account_details.firstName = request.form['firstName']
-        account_details.lastName = request.form['lastName']
-        account_details.email = request.form['email']
-        account_details.mobileNo = request.form['mobileNo']
-        account_details.addressHouseNo = request.form['addressHouseNo']
-        account_details.addressStreetName = request.form['addressStreetName']
-        account_details.addressSuburb = request.form['addressSuburb']
-        account_details.addressCity = request.form['addressCity']
-        account_details.addressPostCode = request.form['addressPostCode']
-        account_details.paymentCardNo = request.form['paymentCardNo']
-        account_details.paymentCardCvc = request.form['paymentCardCvc']
-        account_details.paymentCardExp = request.form['paymentCardExp']
+        firstName = request.form['firstName']
+        lastName = request.form['lastName']
+        email = request.form['email']
+        mobileNo = request.form['mobileNo']
+        addressHouseNo = request.form['addressHouseNo']
+        addressStreetName = request.form['addressStreetName']
+        addressSuburb = request.form['addressSuburb']
+        addressCity = request.form['addressCity']
+        addressPostCode = request.form['addressPostCode']
+        paymentCardNo = request.form['paymentCardNo']
+        paymentCardCvc = request.form['paymentCardCvc']
+        paymentCardExp = request.form['paymentCardExp']
 
-        db.session.commit()
-        flash('Account details updated successfully', category='success')
-        return redirect(url_for('views.accountDetails'))
+        # validate here
+        if not firstName:
+            flash("First name is required", category="error")
+
+        else:
+            if len(mobileNo) < 5:
+                flash("Mobile num must be at least 5 digits", category="error")
+                return redirect(url_for('views.editAccountDetails'))
+     
+            else:
+
+                account_details.firstName = firstName
+                account_details.lastName = lastName
+                account_details.email = email
+                account_details.mobileNo = mobileNo
+                account_details.addressHouseNo = addressHouseNo
+                account_details.addressStreetName = addressStreetName
+                account_details.addressSuburb = addressSuburb
+                account_details.addressCity = addressCity
+                account_details.addressPostCode = addressPostCode
+                account_details.paymentCardNo = paymentCardNo
+                account_details.paymentCardCvc = paymentCardCvc
+                account_details.paymentCardExp = paymentCardExp
+
+                db.session.commit()
+                flash('Account details updated successfully', category='success')
+                return redirect(url_for('views.accountDetails'))
+        
     
     else:
-        return render_template("editAccountDetails.html", user=current_user)
+        return render_template("editAccountDetails.html", user=current_user) 
 
 @views.route('/completeEdit', methods=['POST', 'GET'])
 def completeEdit():
