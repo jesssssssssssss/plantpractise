@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     firstName = db.Column(db.String(150))
     Products = db.relationship('Product')
 
-class AccountDetails(db.Model):
+class AccountDetails(db.Model): 
     __tablename__ = 'AccountDetails'
     userId = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     firstName = db.Column(db.String(150))
@@ -31,6 +31,3 @@ class Product(db.Model):
     data = db.Column(db.String(1000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-
-
