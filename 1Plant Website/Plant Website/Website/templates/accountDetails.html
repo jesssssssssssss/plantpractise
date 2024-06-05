@@ -2,6 +2,11 @@
 {% block title %} Account Details {% endblock %}
 {% block content %}
 <html>
+    <head>
+        <meta charset="utf-8"/>
+            <meta name ="viewport" content="width-device-width, initial-scale=1"/>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/accountDetails.css') }}">
+    </head>
     <body>
         {% with messages = get_flashed_messages(with_categories=true) %} 
         {% if messages %}
@@ -13,44 +18,52 @@
         {% endif %}
     {% endwith %}
     <br><br>
-        <h3 align="center">My Account</h3><br><br>
-        <h3 align="left">Personal Details</h3><br><br><br>
+        <h3 class="myAccountHeading" align="center">My Account</h3><br><br>
 
-        <h3><b>Name: </b></h5>
-        {% if accountDetails.lastName == None or accountDetails.lastName == "None" %}    
-        <h3>{{ accountDetails.firstName }} </h3><br>
-        {% else %}
-        <h3>{{ accountDetails.firstName }} {{ accountDetails.lastName }}</h3><br>
-        {% endif %}
+        <div class="detailsFlex">
 
-        <h3><b>Email Address: </b></h5>
-        <h3>{{ accountDetails.email }} </h3><br>
+            <div class="personalDetailsFlex">
+                <h3 class="detailsHeading">Personal Details</h3><br><br><br>
 
-        <h3><b>Mobile: </b></h5>
-        {% if accountDetails.mobileNo == None or accountDetails.mobileNo == "None" %}
-        <h3> - </h3>      
-        {% else %}
-        <h3>{{ accountDetails.mobileNo }} </h3><br><br><br>
-        {% endif %}
+                <h3><b>Name: </b></h5>
+                {% if accountDetails.lastName == None or accountDetails.lastName == "None" %}    
+                <h3>{{ accountDetails.firstName }} </h3><br>
+                {% else %}
+                <h3>{{ accountDetails.firstName }} {{ accountDetails.lastName }}</h3><br>
+                {% endif %}
 
-        <h3 align="right">Shipping and Payment Details</h3><br><br><br>
-        
-        <h3 align="right"><b>Shipping Address: </b> </h5>
-        {% if accountDetails.addressHouseNo == None or accountDetails.addressHouseNo == "None" %}
-        <h3 align="right"> - </h3>  
-        {% else %}
-        <h3 align="right">{{ accountDetails.addressHouseNo }} {{accountDetails.addressStreetName }}, {{accountDetails.addressSuburb }}, {{accountDetails.addressCity }} {{accountDetails.addressPostCode }}</h3><br>
-        {% endif %}
+                <h3><b>Email Address: </b></h5>
+                <h3>{{ accountDetails.email }} </h3><br>
 
-        <h3 align="right"><b>Payment Details: </b></h5>
-        {% if accountDetails.paymentCardNo == None or accountDetails.paymentCardNo == "None" %}
-        <h3 align="right"> - </h3>      
-        {% else %}
-        <h3 align="right">Visa Mastercard </h3><br>
-        <h3 align="right">{{ masked_card }}</h3><br>
-        <h3 align="right">Exp: {{accountDetails.paymentCardExp }}</h3><br>
-        {% endif %}
+                <h3><b>Mobile: </b></h5>
+                {% if accountDetails.mobileNo == None or accountDetails.mobileNo == "None" %}
+                <h3> - </h3>      
+                {% else %}
+                <h3>{{ accountDetails.mobileNo }} </h3><br><br><br>
+                {% endif %}
+            </div>
+            <div class="shippingPaymentFlex">
+                <h3 class="detailsHeading">Shipping and Payment Details</h3><br><br><br>
+                
+                <h3><b>Shipping Address: </b> </h5>
+                {% if accountDetails.addressHouseNo == None or accountDetails.addressHouseNo == "None" %}
+                <h3> - </h3>  
+                {% else %}
+                <h3>{{ accountDetails.addressHouseNo }} {{accountDetails.addressStreetName }}, {{accountDetails.addressSuburb }}, {{accountDetails.addressCity }} {{accountDetails.addressPostCode }}</h3><br>
+                {% endif %}
 
+                <h3><b>Payment Details: </b></h5>
+                {% if accountDetails.paymentCardNo == None or accountDetails.paymentCardNo == "None" %}
+                <h3 - </h3>      
+                {% else %}
+                <h3>Visa Mastercard </h3><br>
+                <h3>{{ masked_card }}</h3><br>
+                <h3>Exp: {{accountDetails.paymentCardExp }}</h3><br>
+                {% endif %}
+
+                
+            </div>
+        </div>
         <button type="button" id="editAccountDetails"><a href="/editAccountDetails">Edit Account Details</a></button>
            
     </body>
