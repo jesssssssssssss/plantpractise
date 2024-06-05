@@ -53,6 +53,21 @@ def accountDetails():
 
     return render_template('accountDetails.html', user=user, accountDetails=accountDetails, masked_card=masked_card)
 
+# Here is defining functions that validate address and payment details, ensuring they're entered completely. These functions
+#  will be called in the "editAccountDetails" function beneath. 
+
+def validate_address(addressHouseNo, addressStreetName, addressSuburb, addressCity, addressPostCode):
+    if addressHouseNo or addressStreetName or addressSuburb or addressCity or addressPostCode:
+        if not (addressHouseNo and addressStreetName and addressSuburb and addressCity and addressPostCode):
+            return False, "When entering address, please provide complete address information."
+    return True, ""     # Empty string is used here to maintain consistent return types within the function. 
+
+def validate_payment(paymentCardNo, paymentCardCvc, paymentCardExp):
+    if paymentCardNo or paymentCardCvc or paymentCardExp:
+        if not (paymentCardNo and paymentCardCvc and paymentCardExp):
+            return False, "When entering payment details, please provide complete Visa Mastercard information."
+    return True, ""
+
 @views.route('/editAccountDetails', methods=['GET', 'POST'])
 def editAccountDetails():
        
@@ -79,21 +94,38 @@ def editAccountDetails():
         #  have developer tools and knowledge, and adding server-side validation provides extra security. Therefore,
         #  the use of both these methods is not in conflict with the DRY principle. 
         
+        is_valid_address, addresserrormsg = validate_address(addressHouseNo, addressStreetName, addressSuburb, addressCity, addressPostCode)
+        is_valid_payment, paymenterrormsg = validate_payment(paymentCardNo, paymentCardCvc, paymentCardExp)
+        
         if not firstName:
-            flash("First name is required", category="error")
+            flash("First name is required.", category="error")
 
         elif not email:
-            flash("Email is required", category="error")
+            flash("Email is required.", category="error")
 
         else:
-            if len(mobileNo) < 5:
-                flash("Mobile num must be at least 5 digits", category="error")
-                return redirect(url_for('views.editAccountDetails'))
 
-            elif len(firstName) < 2:
-                flash("first nam must be at least 2 characters", category="error")
+            if len(firstName) < 2:
+                flash("First name must be at least 2 characters.", category="error")
                 return redirect(url_for('views.editAccountDetails'))
             
+            elif len(lastName) < 2:
+                flash("Last name must be at least 2 characters.", category="error")
+                return redirect(url_for('views.editAccountDetails'))
+            
+            elif mobileNo and not re.match(r'^\+?[0-9\s]{9,17}$', mobileNo):
+                flash('Invalid input. Mobile number should be 9-17 characters. Only digits, spaces and an optional "+" for area code may be included.', category='error')
+                return redirect(url_for('views.editAccountDetails'))
+            
+            elif not is_valid_address:
+                flash(addresserrormsg, category='error')
+                return redirect(url_for('views.editAccountDetails')) 
+            # ^
+            # NOT CURRENTLY WORKING AS INTENDED - STILL WORKING ON VALIDATING COMPLETE ADDRESS/PAYMENT INPUT 
+            # v
+            elif not is_valid_payment:
+                flash(paymenterrormsg, category='error')
+                return redirect(url_for('views.editAccountDetails'))
      
             else:
 
