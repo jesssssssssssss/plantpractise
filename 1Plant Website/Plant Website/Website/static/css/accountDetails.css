@@ -1,0 +1,32 @@
+.myAccountHeading {
+
+    font-size: 50px;
+    font-weight: lighter;
+}
+
+.detailsFlex{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.personalDetailsFlex{
+
+    align-items: left;
+    margin-left: 6%;
+}
+
+.shippingPaymentFlex{
+
+    align-items: right;
+    margin-right: 6%;
+}
+
+.detailsHeading{
+
+    font-size: 35px;
+}
+
+
