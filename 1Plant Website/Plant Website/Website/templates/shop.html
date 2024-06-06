@@ -5,23 +5,11 @@
 {% block content %}
 <h1>Shop All Items</h1>
  
-<!--Table to display products-->
-<table border ="1">
-    <thead>
-        <td><h3>ID</h3></td>
-        <td><h3>FirstName</h3></td>
-        <td><h3>lastName</h3></td>
-        <td><h3>Address</h3></td>
-        <td><h3>City</h3></td>
-        <td><h3>Update</h3></td>
-        <td><h3>Delete</h3></td>
-    </thead>
-    {% for row in rows %}
-    <tr>
-        <td><h3>{{row[0]}}</h3></td>
-        <td><h3>{{row["name"]}}</h3></td>
-        <td><h3>{{row["summary"]}}</h3></td>
-        <td><h3>{{row["price"]}}</h3></td>
-    </tr>
-</table>
+<ul>
+    {% for product in products %}
+        <li>
+            {{ product.name }} - ${{ product.price }} - <img scr="{{ url_for('static', filename=product.imageUrl) }}">
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}

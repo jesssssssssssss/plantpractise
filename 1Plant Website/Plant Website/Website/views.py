@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
-from .models import Product, User, AccountDetails
+from .models import Product, User, AccountDetails, ShopProducts
 from flask_sqlalchemy import SQLAlchemy
 from . import db 
 import json 
@@ -14,13 +14,9 @@ def home():
     return render_template("home.html", user=current_user) 
 
 @views.route('/shop')
-def shop():
-    con = sql.connect("database.db")
-    con.row_factory = sql.Row
-    cur = con.cursor()
-    cur.execute("select * from shopProducts")
-    rows = cur.fetchall()
-    return render_template('shop.html', user=current_user)
+def shopProducts():
+    products = ShopProducts.query.all()
+    return render_template('shop.html', user=current_user, products=products)
 
 @views.route('/viewCart', methods=['GET', 'POST'])
 @login_required
