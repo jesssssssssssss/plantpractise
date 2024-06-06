@@ -1,28 +1,29 @@
 {% extends "navBase.html" %}
 {% block title %} Sign Up {% endblock %}
 {% block content %}
-<form method="POST">
-    <h3 align="center">Sign Up</h3>
-    <div class="form-group"> 
-        <label for="email">Email Address</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"/>
-    </div>
-
-    <div class="form-group"> 
-        <label for="firstName">First Name</label>
-        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name"/>
-    </div>
-
-    <div class="form-group"> 
-        <label for="password1">Password</label>
-        <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password"/>
-    </div>
-
-    <div class="form-group"> 
-        <label for="password2">Confirm Password</label>
-        <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password"/>
-    </div>
-    <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loginSignup.css') }}">
+</head>
+<body>
+    <form method="POST">
+        <div class="signUpFormFlex">
+        <h3 align="center">Sign Up</h3>
+        
+        <div class = sfLabel1> <label for="email">Email Address</label></div>
+        <div class = sfInput>   <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"/></div>
+        
+            <div class = sfLabel2><label for="firstName">First Name</label></div>
+            <div class = sfInput>   <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name"/></div>
+        
+            <div class = sfLabel3><label for="password1">Password</label></div>
+            <div class = sfInput>   <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password"/></div>
+       
+            <div class = sfLabel4><label for="password2">Confirm Password</label></div>
+            <div class = sfInput>  <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password"/></div>
+        
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </div> 
+    </form>
+</body>
 {% endblock %} 

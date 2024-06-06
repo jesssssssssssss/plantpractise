@@ -3,36 +3,36 @@
 
 {% block content %}
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loginSignup.css') }}">
 </head>
 <body>
-<form method="POST">
-    <h3 align="center" class="loginHeading">Login</h3>
+    <form method="POST">
+        <h3 align="center" class="loginHeading">Login</h3>
 
-    {% with messages = get_flashed_messages(with_categories=true) %} 
-    {% if messages %}
-        <ul>
-            {% for category, message in messages %}
-                <li class="{{category}}"> {{message}} </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {% endwith %}
+        {% with messages = get_flashed_messages(with_categories=true) %} 
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{category}}"> {{message}} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
 
-    <div class="loginformflex">
-    
-        <label for="email">Email Address</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"/>
-    
-
-    
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"/>
-    
+        <div class="loginformflex">
+            
+            <div class = lfLabel1> <label for="email" >Email:</label> </div>       
+            <div class = lfInput> <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"/> </div>
+            <div class = lfLabel2> <label for="password">Password:</label> </div>
+            <div class = lfInput> <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"/> </div>
+            <div class = lfButton> <button type="submit" class="btn btn-primary">Login</button> </div>
+        </div>
+        <br>
+    </form>
+    <div class = signUpLink>
+    <h4>Not a member?&nbsp; <a href="/signUp"> Sign up</a></h4>
     </div>
 
-    <br>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
 </body>
 {% endblock %}
+
