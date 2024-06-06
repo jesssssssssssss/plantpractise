@@ -15,6 +15,11 @@ def home():
 
 @views.route('/shop')
 def shop():
+    con = sql.connect("database.db")
+    con.row_factory = sql.Row
+    cur = con.cursor()
+    cur.execute("select * from shopProducts")
+    rows = cur.fetchall()
     return render_template('shop.html', user=current_user)
 
 @views.route('/viewCart', methods=['GET', 'POST'])
