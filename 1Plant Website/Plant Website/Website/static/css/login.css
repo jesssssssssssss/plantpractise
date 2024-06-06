@@ -1,0 +1,14 @@
+.loginHeading{
+
+    font-size: 40px;
+
+}
+
+.loginformflex{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+}
