@@ -1,0 +1,65 @@
+.loginHeading{
+
+    font-size: 40px;
+    font-weight: lighter;
+
+}
+
+.loginformflex{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+
+
+.lfLabel1{ 
+
+
+    margin-right: 133px;
+    
+}
+
+.lfLabel2{
+
+
+    margin-right: 116px;
+    
+}
+
+.lfInput{
+
+    margin: 10px;
+
+}
+
+.lfButton{
+
+    margin:10px;
+
+}
+
+.signUpFormFlex{
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.signUpLink{
+
+    display: flex;
+    justify-content: center;
+    width:auto;
+
+}
+
+.sfInput{
+
+    margin:10px;
+}
