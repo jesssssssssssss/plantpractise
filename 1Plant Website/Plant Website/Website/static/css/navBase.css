@@ -17,7 +17,7 @@ nav{
 }
 
 .navBarLogoIcon{
-    margin-top: 1%;
+    margin-top: 0.5%;
     margin-left: 3%;
     margin-right: 0%;
     padding: 0%;
@@ -26,18 +26,19 @@ nav{
 .navBarLogoType{
     margin-left: 5%;
     margin-right: 0%;
-    margin-top: 2%;
+    margin-top: 1.5%;
     padding: 0%;
 }
 
 .navBarCategories{
     display: flex;
     margin-top: 3%;
-    margin-left: 10%;
-    margin-right: 5%;
+    margin-left: 11%;
+    margin-right: 0%;
     width: 50%;
     padding: 0%;
 }
+
 
 
 .navItem{
@@ -45,18 +46,26 @@ nav{
     font-style: normal;
     font-weight: 400;
     color: #596C55;
-    font-size: 25pt;
+    font-size: 30pt;
     text-decoration: none;
-    margin-left: 7%;
-    margin-right: 7%;
+    margin-left: 9%;
+    margin-right: 9%;
 }
 
+.navItem:visited{
+    color: #596C55;
+}
+
+.navItem:hover{
+    color: white;
+    transition: 0.2s ease-in-out;
+}
 
 .loginSection{
-    margin-top: 3.5%;
-    display: flex;
-    justify-content: space-around;
-    margin-right: 5%;
+    margin-top: 4%;
+    margin-left: 5%;
+    display: block;
+    width: 200px;
 }
 
 .loginLinks{
@@ -65,6 +74,55 @@ nav{
     font-weight: 400;
     color: #596C55;
     font-size: 15pt;
-    width: 120px;
+    margin-right: 10%;
+    
 }
 
+.loginLinks:visited{
+    color: #596C55;
+}
+
+.loginLinks:hover{
+    color: white;
+    transition: 0.2s ease-in-out;
+}
+
+
+.loggedSection{
+    margin-top: 3.5%;
+    margin-left: 2%;
+    display: block;
+    width: 300px;
+    display: flex;
+    
+}
+
+.loggedLinks{
+    font-family: abril-titling, serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #596C55;
+    font-size: 15pt;
+    margin-right: 10%;
+    margin-top: 4%;
+    
+}
+
+.loggedLinks:visited{
+    color: #596C55;
+}
+
+.loggedLinks:hover{
+    color: white;
+    transition: 0.2s ease-in-out;
+}
+
+.loggedIconsSection{
+    display: flex;
+}
+
+.loggedIcons{
+    margin-top: 2%;
+    margin-right: 10%;
+    text-decoration: none;
+}
