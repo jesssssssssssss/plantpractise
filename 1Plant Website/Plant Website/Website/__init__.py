@@ -31,9 +31,6 @@ def create_app(mail_instance=None):
     else:
         global mail
         mail.init_app(app)
-        '''mail_instance.init_app(app) #Initialise the Mail instance with the app
-    else:
-        mail = Mail(app) #Create a new Mail instance if one is not provided'''
 
     #Importing blueprints
     from .views import views
@@ -44,7 +41,7 @@ def create_app(mail_instance=None):
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(bp, url_prefix='/contact')
 
-    from .models import User, Product, AccountDetails
+    from .models import User, Product, AccountDetails, ShopProducts
 
     create_database(app)
 
@@ -62,4 +59,4 @@ def create_database(app):
     if not path.exists('website/' + DB_NAME):
         with app.app_context():
             db.create_all()
-            print("Database created!")
+            print("Database checked/updated with new tables!")
