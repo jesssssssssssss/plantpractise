@@ -31,3 +31,14 @@ class Product(db.Model):
     data = db.Column(db.String(1000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class ShopProducts(db.Model):
+    __tablename__ = 'shopProducts'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(150), nullable=False) #Is required
+    summary = db.Column(db.String(500), nullable=True)
+    description = db.Column(db.String(1000), nullable=True)
+    price = db.Column(db.Integer, nullable=False) #Is required
+    stock = db.Column(db.Integer, nullable=False) #Is required
+    category = db.Column(db.String(150), nullable=True)
+    imageUrl = db.Column(db.String(150), nullable=True)

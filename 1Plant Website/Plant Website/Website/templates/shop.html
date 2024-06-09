@@ -1,7 +1,15 @@
 <!--Inherits from navBase and overrides blocks-->
 {% extends "navBase.html" %}
 {% block title %}Shop{% endblock %}
-
+ 
 {% block content %}
-<h1>This is the Shop page</h1>
+<h1>Shop All Items</h1>
+ 
+<ul>
+    {% for product in products %}
+        <li>
+            {{ product.name }} - ${{ product.price }} - <img scr="{{ url_for('static', filename=product.imageUrl) }}">
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}
