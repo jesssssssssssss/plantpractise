@@ -3,6 +3,9 @@ body, html{
     padding: 0%;
 }
 
+
+/*Nav Bar code*/
+
 nav{
     height: 170px;
 }
@@ -69,9 +72,9 @@ nav{
 }
 
 .loginLinks{
-    font-family: abril-titling, serif;
-    font-style: normal;
+    font-family: "brandon-grotesque", sans-serif;
     font-weight: 400;
+    font-style: normal;
     color: #596C55;
     font-size: 15pt;
     margin-right: 10%;
@@ -98,9 +101,9 @@ nav{
 }
 
 .loggedLinks{
-    font-family: abril-titling, serif;
-    font-style: normal;
+    font-family: "brandon-grotesque", sans-serif;
     font-weight: 400;
+    font-style: normal;
     color: #596C55;
     font-size: 15pt;
     margin-right: 10%;
@@ -125,4 +128,69 @@ nav{
     margin-top: 2%;
     margin-right: 10%;
     text-decoration: none;
+}
+
+
+
+
+/*Footer code*/
+
+.footerMain{
+    height: 20%;
+    display: flex;
+    background-color: #C0CEC1;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.column1{
+    display: inline;
+}
+
+.column1Text{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 15pt;
+    text-decoration: none;
+}
+
+.socialMedias{
+    display: flex;
+    list-style: none;
+    padding: 0%;
+    justify-content: space-around;
+}
+
+.socialMediaItems{
+    margin-right: 5%;
+}
+
+.footerLogo{
+    margin-top: 1%;
+}
+
+.openHours{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 15pt;
+    text-decoration: none;
+    text-align: right;
+}
+
+.openHoursTitle{
+    margin-bottom: 2%;
+    font-size: 17pt;
+}
+
+.openHoursList{
+    list-style: none;
+    margin-left: 0%;
+    padding-left: 0%;
+    margin-top: 0%;
 }
