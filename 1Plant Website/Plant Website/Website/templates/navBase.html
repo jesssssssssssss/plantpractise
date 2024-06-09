@@ -64,44 +64,54 @@
                 
         </nav>
 
+
+
+
+
+        
         <div class="container">
             {% block content %}
             {% endblock %}
         </div>
 
-        <footer class="footer p-5 bg-light"> <!--bg-light is the colouring-->
-            <div class="container"> 
-                <div class="row"> 
-                    <div class="col-md-3"> 
-                        <a href="/shop"><h5>Contact</h5></a>
-                        <a href="/shop"><h5>About Us</h5></a>
-                        <!--List of icons-->
-                        <ul class="list-inline footer-links"> 
-                            <li class="list-inline-item"> 
-                                <a href="/shop"><img width="50px" height="50px" src="{{ url_for('static', filename='logo.png') }}"></a>
-                              </li> 
-                            <li class="list-inline-item" href="#"> 
-                                <a href="/shop"><img width="50px" height="50px" src="{{ url_for('static', filename='logo.png') }}"></a> 
-                            </li> 
-                            <li class="list-inline-item" href="#"> 
-                                <a href="/shop"><img width="50px" height="50px" src="{{ url_for('static', filename='logo.png') }}"></a>
-                            </li> 
-                        </ul> 
-                    </div> 
-                    <div class="col-md-3"> 
-                        <!--footer logo image-->
-                    <a class="footer-logo" href="/"> <!--linking to the home page-->
-                        <img width="130px" height="100px" src="{{ url_for('static', filename='logo.png') }}">
-                    </a>    
-                    </div> 
-                    <div class="col-md-3"> 
-                        <h5>Open Hours</h5> 
-                        <ul class="list-unstyled"> 
-                            <li>Weekdays 10:00 - 5:00</li> 
-                            <li>Saturday 11:00 - 4:30</li> 
-                            <li>Sunday 11:00 - 3:30</li> 
-                        </ul> 
-                    </div> 
+
+
+        <footer class="footer">
+            <div class="footerMain"> 
+
+                <div class="column1">
+                    <a class="column1Text" href="/shop"><h5>Contact</h5></a>
+                    <a class="column1Text" href="/shop"><h5>About Us</h5></a>
+
+                    
+                    <ul class="socialMedias"> 
+                        <li class="socialMediaItems"> 
+                            <a href="/shop"><img height="40px" src="{{ url_for('static', filename='facebookIcon.png') }}"></a>
+                        </li> 
+
+                        <li class="socialMediaItems" href="#"> 
+                            <a href="/shop"><img height="40px" src="{{ url_for('static', filename='twitterIcon.png') }}"></a>
+                        </li> 
+
+                        <li class="socialMediaItems" href="#"> 
+                            <a href="/shop"><img height="40px" src="{{ url_for('static', filename='instaIcon.png') }}"></a> 
+                        </li> 
+                    </ul> 
+                </div> 
+
+                       
+                <a class="footerLogo" href="/"> <!--linking to the home page-->
+                    <img height="150px" src="{{ url_for('static', filename='iconLogo.png') }}">
+                </a>    
+
+
+                <div class="openHours"> 
+                    <h5 class="openHoursTitle">Open Hours</h5> 
+                    <ul class="openHoursList"> 
+                        <li>Weekdays 10:00 - 5:00</li> 
+                        <li>Saturday 11:00 - 4:30</li> 
+                        <li>Sunday 11:00 - 3:30</li> 
+                    </ul> 
                 </div> 
             </div> 
         </footer> 
