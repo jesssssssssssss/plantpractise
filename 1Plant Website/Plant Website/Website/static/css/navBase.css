@@ -12,6 +12,9 @@ nav{
 
 .navBar{
     background-color: #C0CEC1;
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 
 
@@ -140,9 +143,9 @@ nav{
     display: flex;
     background-color: #C0CEC1;
     justify-content: space-around;
-    position: fixed;
     bottom: 0;
     width: 100%;
+    margin-top: 30%;
 }
 
 .column1{
@@ -154,7 +157,7 @@ nav{
     font-weight: 400;
     font-style: normal;
     color: #596C55;
-    font-size: 15pt;
+    font-size: 17pt;
     text-decoration: none;
 }
 
