@@ -15,6 +15,7 @@ nav{
     position: fixed;
     width: 100%;
     top: 0;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -134,7 +135,15 @@ nav{
 }
 
 
+.iamgeblok{
+    margin-top: 8.9%;
+}
 
+.container{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 20%;
+}
 
 /*Footer code*/
 
