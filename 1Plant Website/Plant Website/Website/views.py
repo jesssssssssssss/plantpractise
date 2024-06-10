@@ -121,9 +121,7 @@ def editAccountDetails():
             elif not is_valid_address:
                 flash(addresserrormsg, category='error')
                 return redirect(url_for('views.editAccountDetails')) 
-            # ^
-            # NOT CURRENTLY WORKING AS INTENDED - STILL WORKING ON VALIDATING COMPLETE ADDRESS/PAYMENT INPUT 
-            # v
+        
             elif not is_valid_payment:
                 flash(paymenterrormsg, category='error')
                 return redirect(url_for('views.editAccountDetails'))
