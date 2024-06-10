@@ -1,63 +1,85 @@
 {% extends "navBase.html" %}
 {% block title %} Account Details {% endblock %}
 {% block content %}
-<form method="POST" action="{{ url_for('views.editAccountDetails') }}">
-    <br><br>
-    <h3  align="center">My Account</h3><br><br>
-    <h3 align="left">Personal Details</h3><br><br><br>
 
-    {% with messages = get_flashed_messages(with_categories=true) %} 
-        {% if messages %}
-            <ul>
-                {% for category, message in messages %}
-                    <li class="{{category}}"> {{message}} </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+<head>
+    <meta charset="utf-8"/>
+    <meta name ="viewport" content="width-device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/accountDetails.css') }}">
+</head>
 
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" value="{{ user.AccountDetails.firstName }}" required/><br>
-        
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" value="{{ user.AccountDetails.lastName }}"/><br>
+<body>
+    <form method="POST" action="{{ url_for('views.editAccountDetails') }}"> <br><br><br><br><br><br><br><br><br><br><br><br>
+        <div  class="errormsg" >
+            {% with messages = get_flashed_messages(with_categories=true) %} 
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{category}}"> {{message}} </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="{{ user.AccountDetails.email }}" required/><br>
+        <h3  align="center" class="myAccountHeading">My Account</h3><br>
+        <div class="detailsFlex">
+            <div class="personalDetailsFlex">
+                <h3 align="left" class="detailsHeading">Personal Details</h3><br>
+                <div class="detailsFlexItem">
+                    <div class="detailsFlexLabel"><label for="firstName">First Name:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label for="lastName">Last Name:</label></div><br>
+                    <div class="nameInput">
+                        <input type="text" id="firstName" name="firstName" value="{{ user.AccountDetails.firstName }}" required/>&nbsp
+                        <input type="text" id="lastName" name="lastName" value="{{ user.AccountDetails.lastName }}"/><br>
+                    </div>
+                </div>
+            
+                <div class="detailsFlexItem">
+                    <div class="detailsFlexLabel"><label for="email">Email:</label></div><br>
+                    <input type="email" id="email" name="email" value="{{ user.AccountDetails.email }}" required/><br>
+                </div>
+
+                <div class="detailsFlexItem">
+                    <div class="detailsFlexLabel"> <label for="mobileNo">Mobile Number:</label></div><br>
+                    <input type="text" id="mobileNo" name="mobileNo" value="{{ user.AccountDetails.mobileNo }}"/><br>
+                </div>
+            </div>
+            
+            <div class="shippingPaymentFlex"> 
+                <h3 class="detailsHeading">Shipping and Payment Details</h3><br>
+                <div class="detailsFlexItem">
+                    <div class="detailsFlexLabel"><label for="addressHouseNo">House/Unit number:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label for="addressStreetName">Street Name:</label></div><br>
+                    <input type="text" id="addressHouseNo" name="addressHouseNo" value="{{ user.AccountDetails.addressHouseNo }}"/>
+                    <input type="text" id="addressStreetName" name="addressStreetName" value="{{ user.AccountDetails.addressStreetName }}"/>
+                </div>
+
+                <div class="detailsFlexItem">
+                    <div class="detailsFlexLabel"><label for="addressSuburb">Suburb:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label for="addressCity">City:</label></div>
+                    <input type="text" id="addressSuburb" name="addressSuburb" value="{{ user.AccountDetails.addressSuburb }}">
+                    <input type="text" id="addressCity" name="addressCity" value="{{ user.AccountDetails.addressCity }}"><br>
+                </div>
 
 
-        <label for="mobileNo">Mobile Number:</label>
-        <input type="text" id="mobileNo" name="mobileNo" value="{{ user.AccountDetails.mobileNo }}"/><br>
-         <br><br>
+                <div class="detailsFlexItem">
+                    <div class="detailsFlexLabel"><label for="addressPostCode">Postcode:</label></div>
+                    <input type="text" id="addressPostCode" name="addressPostCode" value="{{ user.AccountDetails.addressPostCode }}"><br><br><br>
+                </div>
 
-    <h3>Shipping and Payment Details</h3><br><br><br>
+                <div class="detailsFlexItem">
+                    <div class="detailsFlexLabel"><label for="paymentCardNo">Payment Information:</label></div>
+                    <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}"><br> 
+                </div>
+                    <div class="detailsFlexItem">
+                        <div class="detailsFlexLabel"><label for="paymentCardCvc">CVC:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label for="paymentCardExp">Expiration Date:</label></div>
+                    <input type="text" id="paymentCardCvc" name="paymentCardCvc" value="{{ user.AccountDetails.paymentCardCvc }}"> 
+                    <input type="text" id="paymentCardExp" name="paymentCardExp" value="{{ user.AccountDetails.paymentCardExp }}"><br><br><br>
+                </div>
+            </div>
+        </div>
+        <br>
 
-        <label for="addressHouseNo">House/Unit number:</label>
-        <input type="text" id="addressHouseNo" name="addressHouseNo" value="{{ user.AccountDetails.addressHouseNo }}"/><br>
-
-        <label for="addressStreetName">Street Name:</label>
-        <input type="text" id="addressStreetName" name="addressStreetName" value="{{ user.AccountDetails.addressStreetName }}"/><br>
-
-        <label for="addressSuburb">Suburb:</label>
-        <input type="text" id="addressSuburb" name="addressSuburb" value="{{ user.AccountDetails.addressSuburb }}"><br>
-
-        <label for="addressCity">City:</label>
-        <input type="text" id="addressCity" name="addressCity" value="{{ user.AccountDetails.addressCity }}"><br>
-
-        <label for="addressPostCode">Postcode:</label>
-        <input type="text" id="addressPostCode" name="addressPostCode" value="{{ user.AccountDetails.addressPostCode }}"><br><br><br>
-
-        <label for="paymentCardNo">Payment Information:</label>
-        <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}"><br> 
-
-        <label for="paymentCardCvc">CVC:</label>
-        <input type="text" id="paymentCardCvc" name="paymentCardCvc" value="{{ user.AccountDetails.paymentCardCvc }}"><br> 
-
-        <label for="paymentCardExp">Expiration Date:</label>
-        <input type="text" id="paymentCardExp" name="paymentCardExp" value="{{ user.AccountDetails.paymentCardExp }}"><br><br><br>
-
-
-    <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+        <button type="submit" align="center" class="editButton">Update Details</button>
+    
+    </form>
+</body>
 {% endblock %} 
