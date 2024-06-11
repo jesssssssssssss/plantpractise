@@ -2,14 +2,41 @@
 {% extends "navBase.html" %}
 {% block title %}Shop{% endblock %}
  
-{% block content %}
-<h1>Shop All Items</h1>
  
-<ul>
-    {% for product in products %}
-        <li>
-            {{ product.name }} - ${{ product.price }} - <img scr="{{ url_for('static', filename=product.imageUrl) }}">
-        </li>
-    {% endfor %}
-</ul>
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shopPage.css') }}">
+ 
+<div class="shopNav">
+    <ul class="navItems">
+        <li><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Plant</a></li>
+        <li><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Pots/Planters</a></li>
+        <li><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Plant Kits</a></li>
+        <li><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Gift Cards</a></li>
+    </ul>
+</div>
+ 
+<div class="shopContainer">
+   
+    <h1 class="title">Shop All Items</h1>
+ 
+    
+    <div class="flexContainer">
+        {% for product in products %}
+        <div class="flexBox">
+            <div class="productImage">
+                <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
+            </div>
+            <div class="productName">
+                {{ product.name }}
+            </div>
+            <div class="productSummary">
+                {{ product.summary }}
+            </div>
+            <div class="productPrice">
+                ${{ product.price }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>  
+</div>
 {% endblock %}
