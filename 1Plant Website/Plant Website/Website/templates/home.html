@@ -2,6 +2,16 @@
 {% extends "navBase.html" %}
 {% block title %}Home{% endblock %}
 
+{% block imgblok %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<div class="paraOne"> 
+    <h1 class="paraOneTitle">Give the gift of life</h1>
+    <p class="paraOneText">Buy a plant kit today</p>
+    <a class="paraOneButton" href="/shop.html">Shop Now</a>
+
+</div>
+{% endblock %}
+
 {% block content %}
 
 {% with messages = get_flashed_messages(with_categories=true) %} 
@@ -16,10 +26,60 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 
-<div class="paraOne"> 
-    <h1 class="paraOneTitle">Give the gift of life</h1>
-    <p class="paraOneText">Buy a plant kit today</p>
-    <a class="paraOneButton" href="/shop.html">Shop Now</a>
+<div class="whoAreWe">
+    <h1>Who are we?</h1>
+    <p>Here at Roots, located in the heart of Auckland, New Zealand, we pride ourselves on being more than just a plant and pot company, we're cultivators of dreams and nurturers of growth.<br><br>
+
+        As a small business, quality assurance is at the forefront of everything we do. From the vibrant foliage of our plants to the artisanal craftsmanship of our pots, we hand-select each item with meticulous care, ensuring that only the finest specimens grace our shelves.<br><br>
+        
+        But our commitment to excellence doesn't stop there. Sustainability is woven into the fabric of our ethos, guiding every decision we make. From eco-friendly practices to community engagement, we strive to leave a positive impact on our environment and our community.<br><br>
+        
+        More than just a business, Roots is a gathering place for plant enthusiasts and dreamers alike. With our warm and welcoming storefront, we invite you to immerse yourself in a world of greenery and creativity. Whether you're attending one of our workshops or simply browsing our curated collection, you're sure to find inspiration and connection here.<br><br>
+        
+        As we continue to grow, we remain rooted in our values to quality, sustainability, and community. With every leaf that unfurls and every dream that takes root, Roots stands as a testament to the power of nature and the boundless potential of small businesses with big hearts.</p>
 </div>
 
+
+<div class="featuredProducts">
+    <h1>Featured Products</h1>
+    <div class="products">
+
+        <div class="productItem">
+            <a>
+                <img>
+                <p>Snake Plant</p>
+                <p>Sansevieria trifasciata</p>
+                <p>$24.99</p>
+            </a>
+        </div>
+
+        <div class="productItem">
+            <a>
+                <img>
+                <p>Spider Plant</p>
+                <p>Chlorophytum comosum</p>
+                <p>$29.99</p>
+            </a>
+        </div>
+
+        <div class="productItem">
+            <a>
+                <img>
+                <p>Peace Lily</p>
+                <p>Spathiphyllum</p>
+                <p>$29.99</p>
+            </a>
+        </div>
+
+        <div class="productItem">
+            <a>
+                <img>
+                <p>Pothos</p>
+                <p>Epipremnum aureum</p>
+                <p>$29.99</p>
+            </a>
+        </div>
+
+    </div>
+</div>
 {% endblock %}
