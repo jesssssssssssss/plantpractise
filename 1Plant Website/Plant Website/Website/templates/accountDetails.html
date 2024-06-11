@@ -17,25 +17,24 @@
             </ul>
         {% endif %}
     {% endwith %}
-    <br><br><br><br><br><br><br><br><br><br>
-        <h3 class="myAccountHeading" align="center">My Account</h3><br><br>
-
+    
+        <h3 class="myAccountHeading" align="center">My Account</h3>
         <div class="detailsFlex">
 
             <div class="personalDetailsFlex">
-                <h3 class="detailsHeading">Personal Details</h3><br><br><br>
+                <h4 class="detailsHeading">Personal Details</h4><br><br><br>
 
-                <h3><b>Name: </b></h5>
+                <div class="detailsFlexLabel"><p> Name: </p></div>
                 {% if accountDetails.lastName == None or accountDetails.lastName == "None" %}    
                 <h3>{{ accountDetails.firstName }} </h3><br>
                 {% else %}
                 <h3>{{ accountDetails.firstName }} {{ accountDetails.lastName }}</h3><br>
                 {% endif %}
 
-                <h3><b>Email Address: </b></h5>
+                <div class="detailsFlexLabel"><p>Email Address: </p></div>
                 <h3>{{ accountDetails.email }} </h3><br>
 
-                <h3><b>Mobile: </b></h5>
+                <div class="detailsFlexLabel"><p>Mobile: </p></div>
                 {% if accountDetails.mobileNo == None or accountDetails.mobileNo == "None" %}
                 <h3> - </h3>      
                 {% else %}
@@ -43,16 +42,16 @@
                 {% endif %}
             </div>
             <div class="shippingPaymentFlex">
-                <h3 class="detailsHeading">Shipping and Payment Details</h3><br><br><br>
+                <h4 class="detailsHeading">Shipping and Payment Details</h4><br><br><br>
                 
-                <h3><b>Shipping Address: </b> </h5>
+                <div class="detailsFlexLabel"><p>Shipping Address:  </p></div>
                 {% if accountDetails.addressHouseNo == None or accountDetails.addressHouseNo == "None" %}
                 <h3> - </h3>  
                 {% else %}
                 <h3>{{ accountDetails.addressHouseNo }} {{accountDetails.addressStreetName }}, {{accountDetails.addressSuburb }}, {{accountDetails.addressCity }} {{accountDetails.addressPostCode }}</h3><br>
                 {% endif %}
 
-                <h3><b>Payment Details: </b></h5>
+                <div class="detailsFlexLabel"><p>Payment Details:</p></div>
                 {% if accountDetails.paymentCardNo == None or accountDetails.paymentCardNo == "None" %}
                 <h3 - </h3>      
                 {% else %}

@@ -18,6 +18,11 @@ def shopProducts():
     products = ShopProducts.query.all()
     return render_template('shop.html', user=current_user, products=products)
 
+@views.route('/product')
+def product():
+    return render_template('product.html', user=current_user)
+
+
 @views.route('/viewCart', methods=['GET', 'POST'])
 @login_required
 def viewCart():

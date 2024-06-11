@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width:100%;
 
 }
 
@@ -19,13 +20,16 @@
 
 .shippingPaymentFlex{
 
-  
-    margin-right: 6%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:25%;
 }
 
 .detailsHeading{
 
-    font-size: 35px;
+    font-size: 25px;
+    font-weight: normal;
 }
 
 .editButton{
@@ -59,6 +63,7 @@
 
     margin-top:5%;
     margin-bottom:0%;
+    font-weight: lighter;
 }
 
 .nameInput{
