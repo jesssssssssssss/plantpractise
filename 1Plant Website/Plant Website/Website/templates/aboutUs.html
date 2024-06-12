@@ -1,0 +1,22 @@
+<!--Inherits from navBase and overrides blocks-->
+{% extends "navBase.html" %}
+{% block title %}aboutUs{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %} 
+{% if messages %}
+    <ul>
+        {% for category, message in messages %}
+            <li class="{{category}}"> {{message}} </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endwith %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/aboutUs.css') }}">
+
+<h1>About us Page</h1>
+
+
+{% endblock %}
