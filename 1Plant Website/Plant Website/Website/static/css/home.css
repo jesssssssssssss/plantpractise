@@ -78,3 +78,44 @@
     font-size: 18pt;
     text-decoration: none;
 }
+
+
+.featuredProducts{
+    margin-top: 20%;
+}
+
+.featuredProducts h1{
+    font-family: abril-titling, serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #596C55;
+    font-size: 35pt;
+}
+
+.products{
+    display: flex;
+    justify-content: space-around;
+}
+
+.productItem h4{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 22pt;
+    text-decoration: none;
+
+    margin-bottom: 0%;
+}
+
+.productItem p{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 16pt;
+    text-decoration: none;
+
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
