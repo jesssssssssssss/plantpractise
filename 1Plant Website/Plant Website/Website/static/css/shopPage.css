@@ -1,18 +1,15 @@
 .shopNav {
     background-color: yellow;
 }
- 
-.navItems {
-    flex-wrap: wrap;
-}
 
-ul {
+.shopNavItems {
   list-style: none;
   display: flex; 
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-li {
+.shopNavItem {
     margin-right: 10%;
 }
  
@@ -44,15 +41,14 @@ li {
 
 }
 .flexBox {
-    width: 20%;
+    width: 18%;
     height: auto;
     background: yellow;
     text-align: left;
     margin: 2%;
-    border: 1px solid black;
 }
 
 .productImage {
-    width: 50%;
-    height: auto;
+
+    border: 1px solid black;
 }
