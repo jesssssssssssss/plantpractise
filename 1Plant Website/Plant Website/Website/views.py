@@ -22,6 +22,10 @@ def shopProducts():
 def product():
     return render_template('product.html', user=current_user)
 
+@views.route('/aboutUs')
+def aboutUs():
+    return render_template('aboutUs.html', user=current_user)
+
 
 @views.route('/viewCart', methods=['GET', 'POST'])
 @login_required

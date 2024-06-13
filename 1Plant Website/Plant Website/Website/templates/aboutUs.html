@@ -16,7 +16,28 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/aboutUs.css') }}">
 
-<h1>About us Page</h1>
 
+<div class="aboutUs">
+    <h1>About Us</h1>
+    <div class="aboutUsContent">
+        <p>
+            Welcome to Roots, your one-stop destination for plants, pots, and planting equipment. We believe that nurturing plants enhances the beauty of your space and brings tranquility and joy to your life.
+            
+            Our mission is to inspire and support plant enthusiasts of all levels, making gardening accessible and enjoyable for everyone. <br> <br>
+            
+            We offer a diverse selection of high-quality indoor and outdoor plants, stylish and functional pots, and essential planting tools. Each product is carefully chosen to ensure you bring home a thriving green companion.
+            
+            Roots was founded by a group of passionate plant lovers who wanted to share their love for greenery with the world. <br> <br>
+            
+            Our journey is rooted in the belief that everyone deserves to enjoy the benefits of having plants in their lives. We take pride in offering only the best products and expert advice, ensuring your gardening success.
+            
+            Join us at Roots and discover the joy of growing and nurturing plants. Let’s create greener, more beautiful spaces together!
+        </p>
+        <div class="aboutUsIMG">
+            <img height="500px" src="{{ url_for('static', filename='aboutUsPhoto.jpg')  }}">
+            <p>Roots store in full bloom</p>
+        </div>    
+    </div>
+</div>
 
 {% endblock %}

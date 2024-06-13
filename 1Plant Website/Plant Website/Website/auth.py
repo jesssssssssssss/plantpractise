@@ -10,11 +10,6 @@ auth = Blueprint('auth',__name__)
 def shop():
     return "<p>Shop"
 
-@auth.route('/about-us')
-def aboutUs():
-    return "<p>About Us"
-
-
 
 @auth.route('/login', methods=['GET', 'POST']) 
 def login():
