@@ -53,6 +53,7 @@ def product():
 def aboutUs():
     return render_template('aboutUs.html', user=current_user)
 
+
 @views.route('/viewCart', methods=['GET', 'POST'])
 @login_required
 def viewCart():
