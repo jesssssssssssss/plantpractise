@@ -6,15 +6,35 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/shopPage.css') }}">
  
+<!--Shop navigation that link to product categories-->
 <div class="shopNav">
-    <ul class="navItems">
-        <li><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Plant</a></li>
-        <li><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Pots/Planters</a></li>
-        <li><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Plant Kits</a></li>
-        <li><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Gift Cards</a></li>
+    <ul class="shopNavItems">
+        <li class="shopNavItem"><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Plant</a></li>
+        <li class="shopNavItem"><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Pots/Planters</a></li>
+        <li class="shopNavItem"><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Plant Kits</a></li>
+        <li class="shopNavItem"><a href="/shop"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"><br>Gift Cards</a></li>
     </ul>
 </div>
- 
+
+<!--Search bar-->
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.search.label }} {{ form.search(size=20) }}
+    {{ form.submit() }}
+</form>
+
+<!--Displaying flash messages-->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+ <!--Displays the list of products from database and the page title-->
 <div class="shopContainer">
    
     <h1 class="title">Shop All Items</h1>

@@ -8,3 +8,7 @@ class ContactForm(FlaskForm):
     subject = StringField("Subject", validators=[DataRequired(message="Please enter a subject.")])
     message = TextAreaField("Message", validators=[DataRequired(message="Please enter a message.")])
     submit = SubmitField("Submit")
+
+class SearchForm(FlaskForm):
+    search = StringField('Search')
+    submit = SubmitField('Submit')

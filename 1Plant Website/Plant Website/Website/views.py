@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Product, User, AccountDetails, ShopProducts
+from .forms import SearchForm
 from flask_sqlalchemy import SQLAlchemy
 from . import db 
 import json 
@@ -13,10 +14,36 @@ views = Blueprint('views',__name__)
 def home():
     return render_template("home.html", user=current_user) 
 
-@views.route('/shop')
+@views.route('/shop', methods=['GET', 'POST'])
 def shopProducts():
-    products = ShopProducts.query.all()
-    return render_template('shop.html', user=current_user, products=products)
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+
+    return render_template('shop.html', user=current_user, products=products, form=form)
+
 
 @views.route('/product')
 def product():
