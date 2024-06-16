@@ -41,7 +41,7 @@ def create_app(mail_instance=None):
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(bp, url_prefix='/contact')
 
-    from .models import User, Product, AccountDetails, ShopProducts
+    from .models import User, AccountDetails, ShopProducts
 
     create_database(app)
 
