@@ -22,7 +22,7 @@ def contact():
             return render_template('contact.html', form=form, user=current_user)
         #Success message
         else:
-            msg = Message(form.subject.data, sender=current_app.config['MAIL_USERNAME'], recipients=['270268490@yoobeestudent.ac.nz','270278266@yoobeestudent.ac.nz'])
+            msg = Message(form.subject.data, sender=current_app.config['MAIL_USERNAME'], recipients=['270268490@yoobeestudent.ac.nz','270278266@yoobeestudent.ac.nz', '270045467@yoobeestudent.ac.nz'])
             #Formatting email
             msg.body =f"""
             From: {form.name.data} <{form.email.data}>

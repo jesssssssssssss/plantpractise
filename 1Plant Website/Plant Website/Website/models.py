@@ -7,7 +7,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     firstName = db.Column(db.String(150))
-    Products = db.relationship('Product')
 
 class AccountDetails(db.Model): 
     __tablename__ = 'AccountDetails'
@@ -26,12 +25,6 @@ class AccountDetails(db.Model):
     paymentCardExp = db.Column(db.String, nullable=True)
     user = db.relationship('User', backref=db.backref('AccountDetails', uselist=False))
 
-class Product(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.String(1000))
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
 class ShopProducts(db.Model):
     __tablename__ = 'shopProducts'
     id = db.Column(db.Integer, primary_key=True)
@@ -40,5 +33,10 @@ class ShopProducts(db.Model):
     description = db.Column(db.String(1000), nullable=True)
     price = db.Column(db.Integer, nullable=False) #Is required
     stock = db.Column(db.Integer, nullable=False) #Is required
-    category = db.Column(db.String(150), nullable=True)
-    imageUrl = db.Column(db.String(150), nullable=True)
+    category = db.Column(db.String(150), nullable=False) #Is required
+    imageUrl = db.Column(db.String(150), nullable=False) #Is required
+
+
+
+
+    
