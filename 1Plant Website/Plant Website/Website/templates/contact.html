@@ -39,51 +39,33 @@
     <form action="{{ url_for('contact.contact')}}" method=post>
 
 
+        <div class="formSection">
+            {{ form.name.label }}
+            {{ form.name }}
+        </div>
 
-        <div class="formMain">
-
-            <div class="formName">
-                {{ form.name.label }}
-                {{ form.name }}
-            </div>
-
-            <div class="formEmail">
+        <div class="formSection">
             {{ form.email.label }}
             {{ form.email }}
-            </div>
+        </div>
 
-            <div class="formSubject">
+        <div class="formSection">
             {{ form.subject.label }}
             {{ form.subject }}
-            </div>
+        </div>
 
-            <div class="formMessage">
+        <div class="formSection">
             {{ form.message.label }}
             {{ form.message }}
-            </div>
+        </div>
 
-            <div class="formSubmit">
+        <div class="formSection">
             {{ form.submit }}
-            </div>
-
         </div>
 
-
-
-<!--
-
-        <div class="detailsFlexItem">
-            
-            <div class="detailsFlexLabel">
-                <label for="email">Email:</label>
-            </div>
-            <br>
-
-            <input type="email" id="email" name="email" value="{{ user.AccountDetails.email }}" required/><br>
-        </div>
-
--->
 
     </form>
+
+
     {% endif %}
 {% endblock %}
