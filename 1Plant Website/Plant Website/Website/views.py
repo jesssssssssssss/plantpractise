@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
 from .models import User, AccountDetails, ShopProducts
-from .forms import SearchForm
+from .forms import SearchForm, ContactForm
 from flask_sqlalchemy import SQLAlchemy
 from . import db 
 import json 
@@ -13,6 +13,12 @@ views = Blueprint('views',__name__)
 @views.route('/', methods=['GET', 'POST']) 
 def home():
     return render_template("home.html", user=current_user) 
+
+
+
+
+
+
 
 @views.route('/shop', methods=['GET', 'POST'])
 def shopProducts():
