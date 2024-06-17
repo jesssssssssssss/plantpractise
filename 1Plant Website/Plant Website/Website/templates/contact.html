@@ -2,15 +2,24 @@
 {% block title %}Contact{% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
 
-    <h2>Contact</h2>
-    <hr>
 
-    <!--Success Message-->
-    {% if success %}
-        <p>Thank you for your message. We'll get back to you shortly.</p>
-    {% else %}
-        <p>To get in touch with us for further information or queries, please fill in the information below.</p>
+
+
+    <div  class="formHead">
+        <h1>Contact</h1>
+
+        <!--Success Message-->
+        {% if success %}
+            <p>Thank you for your message. We'll get back to you shortly.</p>
+        {% else %}
+            <p>To get in touch with us regarding information or queries, please fill in the information below.</p>
+    </div>
+
+
+
+
 
     <!--Recieving and displaying flash messages-->
     {% for message in form.name.errors %} <!--Name -->
@@ -28,16 +37,53 @@
 
     <!--Form-->
     <form action="{{ url_for('contact.contact')}}" method=post>
-        {{ form.hidden_tag() }} <!--Inserting hidden tag to protect against CSRF attacks-->
-        {{ form.name.label }}
-        {{ form.name }}
-        {{ form.email.label }}
-        {{ form.email }}
-        {{ form.subject.label }}
-        {{ form.subject }}
-        {{ form.message.label }}
-        {{ form.message }}
-        {{ form.submit }}
+
+
+
+        <div class="formMain">
+
+            <div class="formName">
+                {{ form.name.label }}
+                {{ form.name }}
+            </div>
+
+            <div class="formEmail">
+            {{ form.email.label }}
+            {{ form.email }}
+            </div>
+
+            <div class="formSubject">
+            {{ form.subject.label }}
+            {{ form.subject }}
+            </div>
+
+            <div class="formMessage">
+            {{ form.message.label }}
+            {{ form.message }}
+            </div>
+
+            <div class="formSubmit">
+            {{ form.submit }}
+            </div>
+
+        </div>
+
+
+
+<!--
+
+        <div class="detailsFlexItem">
+            
+            <div class="detailsFlexLabel">
+                <label for="email">Email:</label>
+            </div>
+            <br>
+
+            <input type="email" id="email" name="email" value="{{ user.AccountDetails.email }}" required/><br>
+        </div>
+
+-->
+
     </form>
     {% endif %}
 {% endblock %}
