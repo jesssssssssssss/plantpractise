@@ -49,7 +49,6 @@
     <div class="flexContainer">
         {% for product in products %}
         
-        
         <div class="flexBox">
             <a href = "/product/{{product.id}}">
             <div class="productImage">
@@ -59,7 +58,11 @@
                 {{ product.name }}
             </div>
             <div class="productSummary">
+                {% if product.summary == "None" or product.summary == None %}
+                 <p></p>
+                {% else %} 
                 {{ product.summary }}
+                {% endif %}
             </div>
             <div class="productPrice">
                 ${{ product.price }}

@@ -1,0 +1,66 @@
+.flexBox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: pink;
+    
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px;
+
+}
+
+.productImage{
+
+    margin-right: 10%;
+}
+
+.productInfo{
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.dropbtn{
+
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.productCart{
+    margin-left: 18%;
+}
+
+.dropdownQuantity{
+
+    position: relative;
+    display: inline-block;
+}
+
+.quantitySelect{
+
+    display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.quantitySelect a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.quantitySelect a:hover {background-color: #ddd;}
+
+.dropdownQuantity:hover .quantitySelect {display: block;}
+
+.dropdownQuantity:hover .dropbtn {background-color: #3e8e41;}
