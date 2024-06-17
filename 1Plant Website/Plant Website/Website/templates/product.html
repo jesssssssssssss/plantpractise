@@ -1,27 +1,55 @@
 <!--Inherits from navBase and overrides blocks-->
 {% extends "navBase.html" %}
-{% block title %}PRODUCT{% endblock %}
+{% block title %}{{ product.name }}{% endblock %}
  
  
 {% block content %}
-
-<div class="flexContainer">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
+</head>
+<body>
+    <!-- insert breadcrumb nav here ? -->
 
     <div class="flexBox">
         <div class="productImage">
             <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
         </div>
-        <div class="productName">
+        <div class="productInfo">
             {{ product.name }}
-        </div>
-        <div class="productSummary">
-            {{ product.summary }}
-        </div>
-        <div class="productPrice">
+        
+            {% if product.summary == "None" or product.summary == None %} 
+            <br>
+            {% else %} 
+            <br> {{ product.summary }}
+            {% endif %}
+            <br>
             ${{ product.price }}
         </div>
+        <div class="productCart">
+            <p> click n collect status here</p>
+            <p> Delivery availablility status here</p>
+
+            
+            <select name="quantity" id="quantity">
+                <option value="1">Qty: 1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                
+              </select>
+            <br>
+            
+              <button class="addBtn">
+                Add to Cart
+              </button>
+
+
+      
+        </div>
+
     </div>
 
-</div>  
+ 
+
+</body>
 
 {% endblock %}
