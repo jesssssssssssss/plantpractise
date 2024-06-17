@@ -77,7 +77,10 @@
     <div class="flexContainer">
         {% block productDisplay %}
         {% for product in products %}
+        
+        
         <div class="flexBox">
+            <a href = "/product/{{product.id}}">
             <div class="productImage">
                 <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
             </div>
@@ -90,6 +93,7 @@
             <div class="productPrice">
                 ${{ product.price }}
             </div>
+            </a>
         </div>
         {% endfor %}
         {% endblock %}
