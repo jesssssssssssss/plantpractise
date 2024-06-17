@@ -10,6 +10,14 @@
 <body>
     <!-- insert breadcrumb nav here ? -->
 
+    <div class="breadcrumbNav">
+        {% if product.subSubCategory != "None" and product.subSubCategory != None %}
+        <a href="/shop">Shop</a> > <a href="/shop{{product.category}}">{{product.category}}</a> > <a href="/shop{{product.category}}{{product.subCategory}}">{{product.subCategory}}</a> > <a href="/shop{{product.category}}{{product.subCategory}}{{product.subSubCategory}}">{{product.subSubCategory}}</a>
+        {% else %}
+        <p>no</p>
+        {% endif %}
+    </div>
+
     <div class="flexBox">
         <div class="productImage">
             <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
