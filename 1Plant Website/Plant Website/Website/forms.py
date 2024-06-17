@@ -12,3 +12,5 @@ class ContactForm(FlaskForm):
 class SearchForm(FlaskForm):
     search = StringField('Search')
     submit = SubmitField('Submit')
+
+

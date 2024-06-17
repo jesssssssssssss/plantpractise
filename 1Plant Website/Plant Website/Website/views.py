@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
 from .models import User, AccountDetails, ShopProducts
-from .forms import SearchForm
+from .forms import SearchForm, ContactForm
 from flask_sqlalchemy import SQLAlchemy
 from . import db 
 import json 
@@ -13,6 +13,12 @@ views = Blueprint('views',__name__)
 @views.route('/', methods=['GET', 'POST']) 
 def home():
     return render_template("home.html", user=current_user) 
+
+
+
+
+
+
 
 @views.route('/shop', methods=['GET', 'POST'])
 def shopProducts():
@@ -101,6 +107,7 @@ def shopProductsPotsPlanters():
                 flash('No products found', category='error')
     else:
         products = ShopProducts.query.all()
+        
 
     return render_template('shopPotsPlanters.html', user=current_user, products=products, form=form)
 
@@ -195,16 +202,19 @@ def shopProductsSuppliesAccessories():
     return render_template('shopSuppliesAccessories.html', user=current_user, products=products, form=form)
 
 
-@views.route('/product')
-def product():
-    return render_template('product.html', user=current_user)
+@views.route('/product/<int:id>')
+def product(id):
+
+    product = ShopProducts.query.get_or_404(id)
+
+    return render_template('product.html', user=current_user, product=product)
 
 @views.route('/aboutUs')
 def aboutUs():
     return render_template('aboutUs.html', user=current_user)
 
 
-@views.route('/viewCart', methods=['GET', 'POST'])
+''' @views.route('/viewCart', methods=['GET', 'POST'])
 @login_required
 def viewCart():
     if request.method == 'POST':
@@ -218,7 +228,7 @@ def viewCart():
             db.session.commit()
             flash('Product added', category='success')
 
-    return render_template("viewCart.html", user=current_user)
+    return render_template("viewCart.html", user=current_user)'''
 
 
 @views.route('/accountDetails')

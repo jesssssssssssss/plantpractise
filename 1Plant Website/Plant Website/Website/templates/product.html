@@ -1,8 +1,27 @@
-<!-- obv needs working on, incomplete a.f. -->
- {% extends "navBase.html" %}
- {% block title %} Product detailed view here {% endblock %}
-
-
+<!--Inherits from navBase and overrides blocks-->
+{% extends "navBase.html" %}
+{% block title %}PRODUCT{% endblock %}
+ 
+ 
 {% block content %}
-<p>we'll see</p>
+
+<div class="flexContainer">
+
+    <div class="flexBox">
+        <div class="productImage">
+            <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
+        </div>
+        <div class="productName">
+            {{ product.name }}
+        </div>
+        <div class="productSummary">
+            {{ product.summary }}
+        </div>
+        <div class="productPrice">
+            ${{ product.price }}
+        </div>
+    </div>
+
+</div>  
+
 {% endblock %}
