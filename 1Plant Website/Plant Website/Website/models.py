@@ -34,6 +34,8 @@ class ShopProducts(db.Model):
     price = db.Column(db.Integer, nullable=False) #Is required
     stock = db.Column(db.Integer, nullable=False) #Is required
     category = db.Column(db.String(150), nullable=False) #Is required
+    subCategory = db.Column(db.String(150), nullable=True) 
+    subSubCategory = db.Column(db.String(150), nullable=True) 
     imageUrl = db.Column(db.String(150), nullable=False) #Is required
 
 

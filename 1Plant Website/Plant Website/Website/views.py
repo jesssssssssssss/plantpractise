@@ -14,12 +14,6 @@ views = Blueprint('views',__name__)
 def home():
     return render_template("home.html", user=current_user) 
 
-
-
-
-
-
-
 @views.route('/shop', methods=['GET', 'POST'])
 def shopProducts():
     form = SearchForm()
@@ -52,6 +46,7 @@ def shopProducts():
 
 @views.route('/shopPlants', methods=['GET', 'POST'])
 def shopProductsPlants():
+
     form = SearchForm()
     products = []
 
@@ -80,8 +75,444 @@ def shopProductsPlants():
 
     return render_template('shopPlants.html', user=current_user, products=products, form=form)
 
+@views.route('/shopPlantsCactiSucculents', methods=['GET', 'POST'])
+def shopPlantsCactiSucculents():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+
+    return render_template('shopPlantsCactiSucculents.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFlowers', methods=['GET', 'POST'])
+def shopPlantsFlowers():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFlowers.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFlowersAnthuriums', methods=['GET', 'POST'])
+def shopPlantsFlowersAnthuriums():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFlowersAnthuriums.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFlowersOrchids', methods=['GET', 'POST'])
+def shopPlantsFlowersOrchids():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFlowersOrchids.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFlowersOther', methods=['GET', 'POST'])
+def shopPlantsFlowersOther():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFlowersOther.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFlowersPeaceLily', methods=['GET', 'POST'])
+def shopPlantsFlowersPeaceLily():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFlowersPeaceLily.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFoliage', methods=['GET', 'POST'])
+def shopPlantsFoliage():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFoliage.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFoliageCalathea', methods=['GET', 'POST'])
+def shopPlantsFoliageCalathea():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFoliageCalathea.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFoliageCarnivorous', methods=['GET', 'POST'])
+def shopPlantsFoliageCarnivorous():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFoliageCarnivorous.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFoliageFicus', methods=['GET', 'POST'])
+def shopPlantsFoliageFicus():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFoliageFicus.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFoliageMonstera', methods=['GET', 'POST'])
+def shopPlantsFoliageMonstera():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFoliageMonstera.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFoliageOther', methods=['GET', 'POST'])
+def shopPlantsFoliageOther():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFoliageOther.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFoliagePhilodendron', methods=['GET', 'POST'])
+def shopPlantsFoliagePhilodendron():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFoliagePhilodendron.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPlantsFoliageTrailing', methods=['GET', 'POST'])
+def shopPlantsFoliageTrailing():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPlantsFoliageTrailing.html', user=current_user, products=products, form=form)
+
+
 @views.route('/shopPotsPlanters', methods=['GET', 'POST'])
 def shopProductsPotsPlanters():
+
     form = SearchForm()
     products = []
 
@@ -110,6 +541,69 @@ def shopProductsPotsPlanters():
         
 
     return render_template('shopPotsPlanters.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPotsPlantersPlanters', methods=['GET', 'POST'])
+def shopPotsPlantersPlanters():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPotsPlantersPlanters.html', user=current_user, products=products, form=form)
+
+@views.route('/shopPotsPlantersPots', methods=['GET', 'POST'])
+def shopPotsPlantersPots():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopPotsPlantersPots.html', user=current_user, products=products, form=form)
+
 
 @views.route('/shopPlantKits', methods=['GET', 'POST'])
 def shopProductsPlantKits():
@@ -201,6 +695,98 @@ def shopProductsSuppliesAccessories():
 
     return render_template('shopSuppliesAccessories.html', user=current_user, products=products, form=form)
 
+@views.route('/shopSuppliesAccessoriesDecor', methods=['GET', 'POST'])
+def shopSuppliesAccessoriesDecor():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopSuppliesAccessoriesDecor.html', user=current_user, products=products, form=form)
+
+@views.route('/shopSuppliesAccessoriesPlantCare', methods=['GET', 'POST'])
+def shopSuppliesAccessoriesPlantCare():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopSuppliesAccessoriesPlantCare.html', user=current_user, products=products, form=form)
+
+@views.route('/shopSuppliesAccessoriesTools', methods=['GET', 'POST'])
+def shopSuppliesAccessoriesTools():
+
+    form = SearchForm()
+    products = []
+
+    if request.method == 'POST':
+        
+        if form.validate_on_submit():
+            search_term = form.search.data
+        if not search_term:
+            flash('Please enter a search term', category='error')
+        else:
+            #Separating the search_term into separate words
+            search_term = search_term.strip()
+            search_words = search_term.split()
+
+            #Query displaying products that match search_words in their name, summary, description or category
+            products = ShopProducts.query.filter(
+                (ShopProducts.name.contains(search_term)) |
+                (ShopProducts.category.contains(search_term)) |
+                (ShopProducts.summary.contains(search_term)) |
+                db.or_(*[ShopProducts.description.contains(word) for word in search_words])
+            ).all()
+            if not products:
+                flash('No products found', category='error')
+    else:
+        products = ShopProducts.query.all()
+        
+    return render_template('shopSuppliesAccessoriesTools.html', user=current_user, products=products, form=form)
 
 @views.route('/product/<int:id>')
 def product(id):
@@ -344,5 +930,4 @@ def editAccountDetails():
     
     else:
         return render_template("editAccountDetails.html", user=current_user) 
-
 
