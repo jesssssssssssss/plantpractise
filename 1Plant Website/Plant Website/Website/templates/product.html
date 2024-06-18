@@ -10,48 +10,50 @@
 <body>
     <!-- insert breadcrumb nav here ? -->
 
-    <div class="breadcrumbNav">
+    <div class="breadcrumbNav" align="center">
         {% if product.subSubCategory != "None" and product.subSubCategory != None %}
-        <a href="/shop">Shop</a> > <a href="/shop{{product.category}}">{{product.category}}</a> > <a href="/shop{{product.category}}{{product.subCategory}}">{{product.subCategory}}</a> > <a href="/shop{{product.category}}{{product.subCategory}}{{product.subSubCategory}}">{{product.subSubCategory}}</a>
+        <a href="/shop">Shop</a> > <a href="/shop{{product.category}}">{{product.category}}</a> > <a href="/shop{{product.category}}{{product.subCategory}}">{{product.subCategory}}</a> > <a href="/shop{{product.category}}{{product.subCategory}}{{product.subSubCategory}}">{{product.subSubCategory}}</a> > {{product.name}}
+        {% elif product.subCategory != "None" and product.subCategory != None %}
+        <a href="/shop">Shop</a> > <a href="/shop{{product.category}}">{{product.category}}</a> > <a href="/shop{{product.category}}{{product.subCategory}}">{{product.subCategory}}</a> > {{product.name}}
         {% else %}
-        <p>no</p>
+        <a href="/shop">Shop</a> > <a href="/shop{{product.category}}">{{product.category}}</a> > {{product.name}}
         {% endif %}
     </div>
 
     <div class="flexBox">
         <div class="productImage">
-            <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
+            <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="400" height="350" alt="Plant image">
         </div>
+        <div class="infoFlex">
         <div class="productInfo">
             {{ product.name }}
-        
             {% if product.summary == "None" or product.summary == None %} 
             <br>
             {% else %} 
             <br> {{ product.summary }}
             {% endif %}
             <br>
-            ${{ product.price }}
+            <div class=productPrice> ${{ product.price }} </div>
         </div>
         <div class="productCart">
-            <p> click n collect status here</p>
-            <p> Delivery availablility status here</p>
+            <p> Click and Collect available</p>
+            <p> Delivery available</p>
 
+            <div class="qtyAndBtn">
+                <div class="quantity">
+                    <select name="quantity" id="quantity">
+                        <option value="1">Qty: 1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        
+                    </select>
+                </div>
             
-            <select name="quantity" id="quantity">
-                <option value="1">Qty: 1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                
-              </select>
-            <br>
-            
-              <button class="addBtn">
+            <button class="addBtn">
                 Add to Cart
-              </button>
-
-
-      
+            </button>
+            </div>
+        </div>
         </div>
 
     </div>
