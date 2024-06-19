@@ -1,13 +1,6 @@
 {% extends "navBase.html" %}
 {% block title %} Account Details {% endblock %}
 {% block content %}
-<html>
-    <head>
-        <meta charset="utf-8"/>
-            <meta name ="viewport" content="width-device-width, initial-scale=1"/>
-            <link rel="stylesheet" href="{{ url_for('static', filename='css/accountDetails.css') }}">
-    </head>
-    <body>
         {% with messages = get_flashed_messages(with_categories=true) %} 
         {% if messages %}
             <ul>
@@ -18,51 +11,96 @@
         {% endif %}
     {% endwith %}
     
-        <h3 class="myAccountHeading" align="center">My Account</h3>
-        <div class="detailsFlex">
 
-            <div class="personalDetailsFlex">
-                <h4 class="detailsHeading">Personal Details</h4><br><br><br>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/accountDetails.css') }}">
 
-                <div class="detailsFlexLabel"><p> Name: </p></div>
-                {% if accountDetails.lastName == None or accountDetails.lastName == "None" %}    
-                <h3>{{ accountDetails.firstName }} </h3><br>
-                {% else %}
-                <h3>{{ accountDetails.firstName }} {{ accountDetails.lastName }}</h3><br>
-                {% endif %}
 
-                <div class="detailsFlexLabel"><p>Email Address: </p></div>
-                <h3>{{ accountDetails.email }} </h3><br>
+        <h3 class="myAccountHeading" align="center" >My Account</h3>
 
-                <div class="detailsFlexLabel"><p>Mobile: </p></div>
-                {% if accountDetails.mobileNo == None or accountDetails.mobileNo == "None" %}
-                <h3> - </h3>      
-                {% else %}
-                <h3>{{ accountDetails.mobileNo }} </h3><br><br><br>
-                {% endif %}
-            </div>
-            <div class="shippingPaymentFlex">
-                <h4 class="detailsHeading">Shipping and Payment Details</h4><br><br><br>
+
+
+        <div class="detailsMain">
+
+            <div class="detailsGroupBody">
+
+                <h1>Personal Details</h1>
+
+
+
+                <div class="detailsGroup">
+                    <p class="detailsFlexLabel">Name:</p>
+                    {% if accountDetails.lastName == None or accountDetails.lastName == "None" %}    
+                    <h2>{{ accountDetails.firstName }} </h2>
+                    {% else %}
+                    <h2>{{ accountDetails.firstName }} {{ accountDetails.lastName }}</h2>
+                    {% endif %}
+                </div>
+
                 
-                <div class="detailsFlexLabel"><p>Shipping Address:  </p></div>
-                {% if accountDetails.addressHouseNo == None or accountDetails.addressHouseNo == "None" %}
-                <h3> - </h3>  
-                {% else %}
-                <h3>{{ accountDetails.addressHouseNo }} {{accountDetails.addressStreetName }}, {{accountDetails.addressSuburb }}, {{accountDetails.addressCity }} {{accountDetails.addressPostCode }}</h3><br>
-                {% endif %}
 
-                <div class="detailsFlexLabel"><p>Payment Details:</p></div>
-                {% if accountDetails.paymentCardNo == None or accountDetails.paymentCardNo == "None" %}
-                <h3 - </h3>      
-                {% else %}
-                <h3>Visa Mastercard </h3><br>
-                <h3>{{ masked_card }}</h3><br>
-                <h3>Exp: {{accountDetails.paymentCardExp }}</h3><br>
-                {% endif %}
+
+                <div class="detailsGroup">
+                    <p class="detailsFlexLabel">Email Address:</p>
+                    <h2>{{ accountDetails.email }} </h2>
+
+                    <!-- Add else command to validate email-->
+                </div>
+
+
+
+                <div class="detailsGroup">
+                    <p class="detailsFlexLabel">Mobile:</p>
+                    {% if accountDetails.mobileNo == None or accountDetails.mobileNo == "None" %}
+                    <h2> - </h2>      
+                    {% else %}
+                    <h2>{{ accountDetails.mobileNo }} </h2>
+                    {% endif %}
+                </div>
+
+                
             </div>
+
+
+
+
+
+            <div class="detailsGroupBody">
+
+                <h1>Shipping and Payment Details</h1>
+
+
+
+                <div class="shipPayGroup">
+                    <p class="detailsFlexLabel">Shipping Address:</p>
+                    {% if accountDetails.addressHouseNo == None or accountDetails.addressHouseNo == "None" %}
+                    <h2> - </h2>  
+                    {% else %}
+                    <h2>{{ accountDetails.addressHouseNo }} {{accountDetails.addressStreetName }}, {{accountDetails.addressSuburb }}, {{accountDetails.addressCity }} {{accountDetails.addressPostCode }}</h2>
+                    {% endif %}
+                </div>
+
+                
+
+
+                <div class="shipPayGroup">
+                    <p class="detailsFlexLabel">Payment Details:</p>
+                    {% if accountDetails.paymentCardNo == None or accountDetails.paymentCardNo == "None" %}
+                    <h2></h2>     
+                    {% else %}
+                    <h2>Visa Mastercard </h2>
+                    <h2>{{ masked_card }}</h2>
+                    <h2>Exp: {{accountDetails.paymentCardExp }}</h2>
+                    {% endif %}
+                </div>
+
+                
+            </div>
+                
+
         </div>
+
+
+
         <button type="button" align="center" class="editButton" id="editAccountDetails"><a href="/editAccountDetails">Edit</a></button>
        
-    </body>
-</html>
 {% endblock %} 
