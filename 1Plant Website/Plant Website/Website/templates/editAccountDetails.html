@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form method="POST" action="{{ url_for('views.editAccountDetails') }}"> <br><br><br><br><br><br><br><br><br><br><br><br>
+    <form method="POST" action="{{ url_for('views.editAccountDetails') }}">
         <div  class="errormsg" >
             {% with messages = get_flashed_messages(with_categories=true) %} 
             {% if messages %}
@@ -22,28 +22,51 @@
             {% endwith %}
         </div>
 
-        <h3  align="center" class="myAccountHeading">My Account</h3><br>
+
+
+
+
+
+
+        <h3  align="center" class="myAccountHeading">My Account</h3>
+
         <div class="detailsFlex">
+
             <div class="personalDetailsFlex">
-                <h3 align="left" class="detailsHeading">Personal Details</h3><br>
+
+                <h3 align="left" class="detailsHeading">Personal Details</h3>
+
                 <div class="detailsFlexItem">
-                    <div class="detailsFlexLabel"><label for="firstName">First Name:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label for="lastName">Last Name:</label></div><br>
+
+                    <div class="detailsFlexLabel">
+                        <label for="firstName">First Name:</label>
+                        <label for="lastName">Last Name:</label>
+                    </div>
+
                     <div class="nameInput">
                         <input type="text" id="firstName" name="firstName" value="{{ user.AccountDetails.firstName }}" required/>&nbsp
-                        <input type="text" id="lastName" name="lastName" value="{{ user.AccountDetails.lastName }}"/><br>
+                        <input type="text" id="lastName" name="lastName" value="{{ user.AccountDetails.lastName }}"/>
                     </div>
                 </div>
             
                 <div class="detailsFlexItem">
-                    <div class="detailsFlexLabel"><label for="email">Email:</label></div><br>
-                    <input type="email" id="email" name="email" value="{{ user.AccountDetails.email }}" required/><br>
+                    <div class="detailsFlexLabel"><label for="email">Email:</label></div>
+                    <input type="email" id="email" name="email" value="{{ user.AccountDetails.email }}" required/>
                 </div>
 
                 <div class="detailsFlexItem">
-                    <div class="detailsFlexLabel"> <label for="mobileNo">Mobile Number:</label></div><br>
-                    <input type="text" id="mobileNo" name="mobileNo" value="{{ user.AccountDetails.mobileNo }}"/><br>
+                    <div class="detailsFlexLabel"> <label for="mobileNo">Mobile Number:</label></div>
+                    <input type="text" id="mobileNo" name="mobileNo" value="{{ user.AccountDetails.mobileNo }}"/>
                 </div>
             </div>
+
+
+
+
+
+
+
+
             
             <div class="shippingPaymentFlex"> 
                 <h3 class="detailsHeading">Shipping and Payment Details</h3><br>
