@@ -43,43 +43,19 @@
 <div class="featuredProducts">
     <h1>Featured Products</h1>
     <div class="products">
-
+ 
+        {% for product in products %}
+ 
         <div class="productItem">
             <a>
-                <img>
-                <h4>Snake Plant</h4>
-                <p>Sansevieria trifasciata</p>
-                <p>$24.99</p>
+                <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
+                <h4>{{ product.name }}</h4>
+                <p>{{ product.summary }}</p>
+                <p>$ {{ product.price }}</p>
             </a>
         </div>
-
-        <div class="productItem">
-            <a>
-                <img>
-                <h4>Spider Plant</h4>
-                <p>Chlorophytum comosum</p>
-                <p>$29.99</p>
-            </a>
-        </div>
-
-        <div class="productItem">
-            <a>
-                <img>
-                <h4>Peace Lily</h4>
-                <p>Spathiphyllum</p>
-                <p>$29.99</p>
-            </a>
-        </div>
-
-        <div class="productItem">
-            <a>
-                <img>
-                <h4>Pothos</h4>
-                <p>Epipremnum aureum</p>
-                <p>$29.99</p>
-            </a>
-        </div>
-
+        {% endfor %}
+ 
     </div>
 </div>
 {% endblock %}
