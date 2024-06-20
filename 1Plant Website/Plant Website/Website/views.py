@@ -817,12 +817,14 @@ def addToCart(productId):
     product = ShopProducts.query.get_or_404(productId)
     existingCartItem = UserCart.query.filter_by(userId=current_user.id, productId=productId).first()
 
+    qty = int(request.form['quantity'])
+
     if existingCartItem:
-        existingCartItem.quantity += 1
+        existingCartItem.quantity += qty
         db.session.commit()
         flash('Product quantity updated in cart', category='success')
     else:
-        newCartItem = UserCart(userId=current_user.id, productId=productId, quantity=1)
+        newCartItem = UserCart(userId=current_user.id, productId=productId, quantity=qty)
         db.session.add(newCartItem)
         db.session.commit()
         flash('Product added to cart', category='success')
