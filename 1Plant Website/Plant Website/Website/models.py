@@ -51,6 +51,7 @@ class UserCart(db.Model):
     shopproduct = db.relationship('ShopProducts')
     user = db.relationship('User')
     
+
  
 # shopproduct = db.relationship('ShopProducts', backref=db.backref('userCart', uselist=False (? maybe make uselist=true) ))
 
