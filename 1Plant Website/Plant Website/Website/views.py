@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from .models import User, AccountDetails, ShopProducts, UserCart
 from .forms import SearchForm, ContactForm
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import Session
 from . import db 
 import json 
 import sqlite3 as sql
@@ -10,9 +11,24 @@ import re
 
 views = Blueprint('views',__name__)
 
-@views.route('/', methods=['GET', 'POST']) 
+@views.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template("home.html", user=current_user) 
+    products = featuredProducts()
+    return render_template("home.html", user=current_user, products=products)
+ 
+@views.route('/featuredProducts')
+def featuredProducts():
+    #Specifying the products displayed by id
+    productIds = [5,3,2,4]
+ 
+    #Creating a session
+    session = Session(db.engine)
+ 
+    #Database queries
+    products = session.query(ShopProducts).filter(ShopProducts.id.in_(productIds)).all()
+ 
+    session.close()
+    return products
 
 @views.route('/shop', methods=['GET', 'POST'])
 def shopProducts():
