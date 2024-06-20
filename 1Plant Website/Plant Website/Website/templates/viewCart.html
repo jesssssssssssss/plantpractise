@@ -1,0 +1,21 @@
+{% extends "navBase.html" %}
+{% block content %}
+<h1>My Cart</h1>
+<div class="cart">
+    {% if cartItems %}
+    <ul>
+        {% for item in cartItems %}
+        <li>
+            <h2>{{ item.shopproduct.name }}</h2>
+            <p>{{ item.shopproduct.description }}</p>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Price: ${{ item.shopproduct.price * item.quantity }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <h3>Total Price: ${{ total_price }}</h3>
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
