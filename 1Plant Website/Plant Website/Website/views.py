@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
-from .models import User, AccountDetails, ShopProducts
+from .models import User, AccountDetails, ShopProducts, UserCart
 from .forms import SearchForm, ContactForm
 from flask_sqlalchemy import SQLAlchemy
 from . import db 
@@ -795,27 +795,34 @@ def product(id):
 
     return render_template('product.html', user=current_user, product=product)
 
+@views.route('/addToCart/<int:productId>', methods=['POST'])
+@login_required
+def addToCart(productId):
+    product = ShopProducts.query.get_or_404(productId)
+    existingCartItem = UserCart.query.filter_by(userId=current_user.id, productId=productId).first()
+
+    if existingCartItem:
+        existingCartItem.quantity += 1
+        db.session.commit()
+        flash('Product quantity updated in cart', category='success')
+    else:
+        newCartItem = UserCart(userId=current_user.id, productId=productId, quantity=1)
+        db.session.add(newCartItem)
+        db.session.commit()
+        flash('Product added to cart', category='success')
+
+    return redirect(url_for('views.shopProducts'))
+ 
+@views.route('/viewCart', methods=['GET'])
+@login_required
+def viewCart(): 
+    cartItems = UserCart.query.filter_by(userId=current_user.id).all()
+    totalPrice = sum(item.shopproduct .price * item.quantity for item in cartItems)
+    return render_template('viewCart.html', user=current_user, cartItems=cartItems, totalPrice=totalPrice) 
+
 @views.route('/aboutUs')
 def aboutUs():
     return render_template('aboutUs.html', user=current_user)
-
-
-''' @views.route('/viewCart', methods=['GET', 'POST'])
-@login_required
-def viewCart():
-    if request.method == 'POST':
-        product = request.form.get('product')
-
-        if len(product) < 1:
-            flash('Product is too short', category='eror')
-        else: 
-            new_product=Product(data=product, user_id=current_user.id)
-            db.session.add(new_product)
-            db.session.commit()
-            flash('Product added', category='success')
-
-    return render_template("viewCart.html", user=current_user)'''
-
 
 @views.route('/accountDetails')
 @login_required

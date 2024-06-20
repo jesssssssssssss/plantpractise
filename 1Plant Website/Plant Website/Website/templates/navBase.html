@@ -35,15 +35,12 @@
                 </div>
 
                 
-
-
-
                 {% if user.is_authenticated %} <!--NEW ADDITION-->
                 <!--Nav icons-->
                 <div class="loggedSection">
                     <a class="loggedLinks" id="logout" href="/logout">Logout</a>  
                     
-                    <a class="loggedIcons" href="#"><!--need to link to cart page-->
+                    <a class="loggedIcons" href="/viewCart"><!--need to link to cart page-->
                         <img height="40px" src="{{ url_for('static', filename='shoppingCart.png')  }}">
                     </a>
 
