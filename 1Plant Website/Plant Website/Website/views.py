@@ -830,10 +830,32 @@ def addToCart(productId):
         flash('Product added to cart', category='success')
 
     return redirect(url_for('views.shopProducts'))
+
+@views.route('/removeFromCart/<int:productId>', methods=['POST'])
+@login_required
+def removeFromCart(productId):
+            
+    existingCartItem = UserCart.query.filter_by(userId=current_user.id, productId=productId).first()
+
+    if existingCartItem:
+        if existingCartItem.quantity > 1:
+            existingCartItem.quantity -= 1
+            db.session.commit()
+            flash('One of these removed from cart', category='success')
+        else:
+            db.session.delete(existingCartItem)
+            db.session.commit()
+            flash('Product removed from cart', category='success')
+    else:
+            flash('Product not found in cart', category='error')
+
+    return redirect(url_for('views.viewCart'))
+
  
 @views.route('/viewCart', methods=['GET'])
 @login_required
 def viewCart(): 
+
     cartItems = UserCart.query.filter_by(userId=current_user.id).all()
     totalPrice = sum(item.shopproduct .price * item.quantity for item in cartItems)
     return render_template('viewCart.html', user=current_user, cartItems=cartItems, totalPrice=totalPrice) 
@@ -861,7 +883,7 @@ def accountDetails():
 
     return render_template('accountDetails.html', user=user, accountDetails=accountDetails, masked_card=masked_card)
 
-# Here is defining functions that validate address and payment details, ensuring they're entered completely. These functions
+# This is defining functions that validate address and payment details, ensuring they're entered completely. These functions
 #  will be called in the "editAccountDetails" function beneath. 
 
 def validate_address(addressHouseNo, addressStreetName, addressSuburb, addressCity, addressPostCode):
