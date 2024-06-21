@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name ="viewport" content="width-device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/accountDetails.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editAccountDetails.css') }}">
 </head>
 
 <body>
@@ -28,34 +28,35 @@
 
 
 
-        <h3  align="center" class="myAccountHeading">My Account</h3>
+        <h1  align="center" class="myAccountHeading">My Account</h1>
 
         <div class="detailsFlex">
 
             <div class="personalDetailsFlex">
 
-                <h3 align="left" class="detailsHeading">Personal Details</h3>
+                <h1 align="left" class="detailsHeading">Personal Details</h1>
 
-                <div class="detailsFlexItem">
+                <div class="sideOnCategory">
 
-                    <div class="detailsFlexLabel">
+                    <div class="box">
                         <label for="firstName">First Name:</label>
-                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="firstName" name="firstName" value="{{ user.AccountDetails.firstName }}" required/>   
                     </div>
 
-                    <div class="nameInput">
-                        <input type="text" id="firstName" name="firstName" value="{{ user.AccountDetails.firstName }}" required/>&nbsp
+                    <div class="box">
+                        <label for="lastName">Last Name:</label>
                         <input type="text" id="lastName" name="lastName" value="{{ user.AccountDetails.lastName }}"/>
                     </div>
+
                 </div>
             
-                <div class="detailsFlexItem">
-                    <div class="detailsFlexLabel"><label for="email">Email:</label></div>
+                <div class="boxSingle">
+                    <label for="email">Email:</label>
                     <input type="email" id="email" name="email" value="{{ user.AccountDetails.email }}" required/>
                 </div>
 
-                <div class="detailsFlexItem">
-                    <div class="detailsFlexLabel"> <label for="mobileNo">Mobile Number:</label></div>
+                <div class="boxSingle">
+                    <label for="mobileNo">Mobile Number:</label>
                     <input type="text" id="mobileNo" name="mobileNo" value="{{ user.AccountDetails.mobileNo }}"/>
                 </div>
             </div>
@@ -68,35 +69,74 @@
 
 
             
-            <div class="shippingPaymentFlex"> 
-                <h3 class="detailsHeading">Shipping and Payment Details</h3><br>
-                <div class="detailsFlexItem">
-                    <div class="detailsFlexLabel"><label for="addressHouseNo">House/Unit number:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label for="addressStreetName">Street Name:</label></div><br>
-                    <input type="text" id="addressHouseNo" name="addressHouseNo" value="{{ user.AccountDetails.addressHouseNo }}"/>
-                    <input type="text" id="addressStreetName" name="addressStreetName" value="{{ user.AccountDetails.addressStreetName }}"/>
+            <div class="personalDetailsFlex"> 
+                
+                <h1 class="detailsHeading">Shipping and Payment Details</h1>
+
+                <div class="sideOnCategory">
+
+                    <div class="box">
+                        <label for="addressHouseNo">House/Unit number:</label>
+                        <input type="text" id="addressHouseNo" name="addressHouseNo" value="{{ user.AccountDetails.addressHouseNo }}"/>   
+                    </div>
+
+                    <div class="box">
+                        <label for="addressStreetName">Street Name:</label>
+                        <input type="text" id="addressStreetName" name="addressStreetName" value="{{ user.AccountDetails.addressStreetName }}"/>
+                    </div>
+
                 </div>
 
-                <div class="detailsFlexItem">
-                    <div class="detailsFlexLabel"><label for="addressSuburb">Suburb:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label for="addressCity">City:</label></div>
-                    <input type="text" id="addressSuburb" name="addressSuburb" value="{{ user.AccountDetails.addressSuburb }}">
-                    <input type="text" id="addressCity" name="addressCity" value="{{ user.AccountDetails.addressCity }}"><br>
+
+                <div class="sideOnCategory">
+
+                    <div class="box">
+                        <label for="addressSuburb">Suburb:</label>
+                        <input type="text" id="addressSuburb" name="addressSuburb" value="{{ user.AccountDetails.addressSuburb }}">
+                    </div>
+
+                    <div class="box">
+                        <label for="addressCity">City:</label>
+                        <input type="text" id="addressCity" name="addressCity" value="{{ user.AccountDetails.addressCity }}">
+                    </div>
+
+                </div>
+            
+
+               
+
+
+                <div class="boxSingle">
+                    <label for="addressPostCode">Postcode:</label>
+                    <input type="text" id="addressPostCode" name="addressPostCode" value="{{ user.AccountDetails.addressPostCode }}">
                 </div>
 
 
-                <div class="detailsFlexItem">
-                    <div class="detailsFlexLabel"><label for="addressPostCode">Postcode:</label></div>
-                    <input type="text" id="addressPostCode" name="addressPostCode" value="{{ user.AccountDetails.addressPostCode }}"><br><br><br>
+
+                <div class="boxSingle">
+                    <label for="paymentCardNo">Payment Information:</label>
+                    <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}">
                 </div>
 
-                <div class="detailsFlexItem">
-                    <div class="detailsFlexLabel"><label for="paymentCardNo">Payment Information:</label></div>
-                    <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}"><br> 
+
+
+                <div class="sideOnCategory">
+
+                    <div class="box">
+                        <label for="paymentCardCvc">CVC:</label>
+                        <input type="text" id="paymentCardCvc" name="paymentCardCvc" value="{{ user.AccountDetails.paymentCardCvc }}">
+                    </div>
+
+                    <div class="box">
+                        <label for="paymentCardExp">Expiration Date:</label>
+                        <input type="text" id="paymentCardExp" name="paymentCardExp" value="{{ user.AccountDetails.paymentCardExp }}">
+                    </div>
+
                 </div>
-                    <div class="detailsFlexItem">
-                        <div class="detailsFlexLabel"><label for="paymentCardCvc">CVC:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label for="paymentCardExp">Expiration Date:</label></div>
-                    <input type="text" id="paymentCardCvc" name="paymentCardCvc" value="{{ user.AccountDetails.paymentCardCvc }}"> 
-                    <input type="text" id="paymentCardExp" name="paymentCardExp" value="{{ user.AccountDetails.paymentCardExp }}"><br><br><br>
-                </div>
+
+
+
+                
             </div>
         </div>
         <br>
