@@ -1,0 +1,97 @@
+.errormsg {
+
+    color: rgba(231, 0, 0, 0.692);
+    display: flex;
+    justify-content: center;
+}
+
+
+.myAccountHeading{
+    font-family: abril-titling, serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #596C55;
+    font-size: 35pt;
+}
+
+
+
+.detailsFlex input{
+    height: 40px;
+    border: 3px solid #596C55;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.personalDetailsFlex{
+    margin-bottom: 10%;
+}
+
+.personalDetailsFlex h1{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #596C55;
+    font-size: 20pt;
+
+    margin-bottom: 60px;
+}
+
+
+.sideOnCategory{
+    display: flex;
+    margin-bottom: 2%;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    margin-right: 2%;
+}
+
+.box label{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 18pt;
+}
+
+
+.boxSingle{
+    display: flex;
+    flex-direction: column;
+    width: 15.7%;
+    margin-bottom: 2%;
+}
+
+.boxSingle label{
+    width: 250px;
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 18pt;
+}
+
+.editButton{
+    background-color: #C0CEC1;
+    border: 3px solid #596C55;
+    border-radius: 6px;
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 18pt;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.editButton:hover{
+    background-color: #596C55;
+    border: 3px solid #596C55;
+    color: white;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+    transition: 0.2s ease-in-out;
+}
