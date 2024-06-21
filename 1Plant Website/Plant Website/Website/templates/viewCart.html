@@ -1,19 +1,33 @@
 {% extends "navBase.html" %}
 {% block content %}
 <h1>My Cart</h1>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
 <div class="cart">
     {% if cartItems %}
     <ul>
         {% for item in cartItems %}
         <li>
             <h2>{{ item.shopproduct.name }}</h2>
-            <p>{{ item.shopproduct.description }}</p>
+
             <p>Quantity: {{ item.quantity }}</p>
             <p>Price: ${{ item.shopproduct.price * item.quantity }}</p>
         </li>
+        <form id="deleteOne" action="{{ url_for('views.removeFromCart', productId=item.productId) }}" method="POST">
+            <button>Delete one</button>
+        </form>
         {% endfor %}
     </ul>
-    <h3>Total Price: ${{ total_price }}</h3>
+    <h3>Total Price: ${{ totalPrice }}</h3>
     {% else %}
     <p>Your cart is empty.</p>
     {% endif %}
