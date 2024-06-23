@@ -4,11 +4,30 @@
 
 {% block title %}Shop Plants{% endblock %}
 
+<!--Overrides the name of the page/category-->
+{% block categoryTitle %}
+<h1 class="title">Plants</h1>
+{% endblock %}
+
+<!--Category's sub navigation-->
+{% block subNav %}
+<div class="shopSubNav">
+
+    <ul class="subNavItems">
+
+        <li class="subNavItem"><a href="/shopPlantsFlowers">Flowers</a></li>
+
+        <li class="subNavItem"><a href="/shopPlantsFoliage">Foliage</a></li>
+
+        <li class="subNavItem"><a href="/shopPlantsCactiSucculents">Cati/Succulents</a></li>
+    </ul>
+
+</div>
+{% endblock %}
+
 {% block productDisplay %}
 
  <!--Displays the list of products from database and the page title-->
-
-<h1 class="title">Plants</h1>
 
 <div class="shopContainer"></div>
     <div class="flexContainer">

@@ -3,10 +3,31 @@
 
 {% block title %}Shop Supplies/Accessories{% endblock %}
  
-{% block productDisplay %}
- <!--Displays the list of products from database and the page title-->
-   
+<!--Overrides the name of the page/category-->
+{% block categoryTitle %}
 <h1 class="title">Supplies/Accessories</h1>
+{% endblock %}
+
+<!--Category's sub navigation-->
+{% block subNav %}
+<div class="shopSubNav">
+
+    <ul class="subNavItems">
+
+        <li class="subNavItem"><a href="/shopSuppliesAccessoriesPlantCare">Plant Care</a></li>
+
+        <li class="subNavItem"><a href="/shopSuppliesAccessoriesTools">Tools</a></li>
+
+        <li class="subNavItem"><a href="/shopSuppliesAccessoriesDecor">Decorations</a></li>
+
+    </ul>
+
+</div>
+{% endblock %}
+
+{% block productDisplay %}
+
+ <!--Displays the list of products from database and the page title-->
  
 <div class="shopContainer"></div>
     <div class="flexContainer">
