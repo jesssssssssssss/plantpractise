@@ -1,36 +1,58 @@
 {% extends "navBase.html" %}
+{% block title %}Cart{% endblock %}
 {% block content %}
-<h1>My Cart</h1>
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        <ul>
-            {% for category, message in messages %}
-                <li class="{{ category }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
+<div class=pageHeader><h1>Your Cart</h1></div>
 
-<div class="cart">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/viewCart.css') }}">
+</head>
+
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     {% if cartItems %}
-        <ul>
+        <div class="cart">   
             {% for item in cartItems %}
-            <li>
-                <h2>{{ item.shopproduct.name }}</h2>
+                <div class="cartItem">
+                    <form id="deleteOne" action="{{ url_for('views.removeFromCart', productId=item.productId) }}" method="POST">
+                        <button class="delBtn">Delete one</button>
+                    </form>
 
-                <p>Quantity: {{ item.quantity }}</p>
-                <p>Price: ${{ item.shopproduct.price * item.quantity }}</p>
-            </li>
-            <form id="deleteOne" action="{{ url_for('views.removeFromCart', productId=item.productId) }}" method="POST">
-                <button>Delete one</button>
-            </form>
+                    <div class="productImage">
+                        <img src="{{ url_for('static', filename='img/' + item.shopproduct.imageUrl) }}" width="200" height="150" alt="Plant image">
+                    </div>
+
+                    <div class="itemTitle">
+                        <h2>{{ item.shopproduct.name }}</h2>
+                        {% if item.shopproduct.summary %}
+                        {{item.shopproduct.summary}}
+                        {% else %}
+                        <p>-</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="qty"> {{ item.quantity }} </div>
+                    <p>Price: ${{ item.shopproduct.price * item.quantity }}</p>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
+        
+        
+        
         <h3>Total Price: ${{ totalPrice }}</h3>
         <button><a href="/checkout">Checkout</a></button>
     {% else %}
     <p>Your cart is empty.</p>
     {% endif %}
-</div>
-{% endblock %}
+
+    {% endblock %}
+</body>
