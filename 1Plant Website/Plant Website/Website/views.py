@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
-from .models import User, AccountDetails, ShopProducts, UserCart
+from .models import User, AccountDetails, ShopProducts, UserCart, OrderItem, Order
 from .forms import SearchForm, ContactForm
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import Session
@@ -978,3 +978,47 @@ def editAccountDetails():
     else:
         return render_template("editAccountDetails.html", user=current_user) 
 
+
+@views.route('/checkout', methods=['GET', 'POST'])
+@login_required
+def checkout():
+    if request.method == 'POST':
+        # Process the order
+        userId = current_user.id
+        cartItems = UserCart.query.filter_by(userId=userId).all()
+        totalAmount = sum(item.quantity * item.shopproduct.price for item in cartItems)
+
+        # Create a new order
+        newOrder = Order(userId=userId, totalAmount=totalAmount)
+        db.session.add(newOrder)
+        db.session.commit()
+
+        # Add items to the order
+        for item in cartItems:
+            orderItem = OrderItem(
+                orderId=newOrder.id,
+                productId=item.productId,
+                quantity=item.quantity,
+                price=item.shopproduct.price
+            )
+            db.session.add(orderItem)
+
+            # Update stock levels
+            item.shopproduct.stock -= item.quantity
+            db.session.delete(item)
+
+        db.session.commit()
+        flash('Order placed successfully', category='success')
+        return redirect(url_for('views.orderConfirmation', orderId=newOrder.id))
+
+    else:
+        userId = current_user.id
+        cartItems = UserCart.query.filter_by(userId=userId).all()
+        totalAmount = sum(item.quantity * item.shopproduct.price for item in cartItems)
+        return render_template('checkout.html', cartItems=cartItems, totalAmount=totalAmount, user=current_user)
+
+@views.route('/orderConfirmation/<int:orderId>', methods=['GET'])
+@login_required
+def orderConfirmation(orderId):
+    order = Order.query.get_or_404(orderId)
+    return render_template('orderConfirmation.html', order=order, user=current_user)
