@@ -6,11 +6,11 @@
   list-style: none;
   display: flex; 
   justify-content: center;
-  flex-wrap: wrap;
+  
 }
 
-.shopNavItem {
-    margin-right: 10%;
+.shopNavItem li{
+    display: block;
 }
  
 .navImage {
@@ -22,7 +22,11 @@
 }
 
 .title {
-    background-color: purple;
+    font-family: abril-titling, serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #596C55;
+    font-size: 35pt;
     text-align: center;
 }
  
