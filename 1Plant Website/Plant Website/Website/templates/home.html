@@ -16,7 +16,7 @@
 
 {% with messages = get_flashed_messages(with_categories=true) %} 
 {% if messages %}
-    <ul>
+    <ul class="message">
         {% for category, message in messages %}
             <li class="{{category}}"> {{message}} </li>
         {% endfor %}
@@ -47,7 +47,7 @@
         {% for product in products %}
  
         <div class="productItem">
-            <a>
+            <a href = "/product/{{product.id}}">
                 <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
                 <h4>{{ product.name }}</h4>
                 <p>{{ product.summary }}</p>
