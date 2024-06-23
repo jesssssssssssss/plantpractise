@@ -70,9 +70,3 @@ class OrderItem(db.Model):
     quantity = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     shopProducts = db.relationship('ShopProducts')
-
-
-
-
-
-    

@@ -1,0 +1,53 @@
+.pageHeader{
+
+    padding-top: 3.5%;
+    
+}
+
+.cart{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+
+.cartItem{
+
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+
+}
+
+.delBtn{
+
+    margin-top: 35%;
+    margin-left: 60%;
+    margin-right: 20%;
+ 
+}
+
+.productImage{
+
+    margin-left: 2.5%;
+    margin-right: 0%;
+    
+}
+
+.itemTitle{
+
+    margin-left:0%;
+}
+
+.qty{
+
+    border: 1px solid black;
+    padding: 10%;
+    margin-left:5%;
+    margin-right:5%;
+    border-radius: 30%;
+    max-height: 10%;
+    
+}
+
+
