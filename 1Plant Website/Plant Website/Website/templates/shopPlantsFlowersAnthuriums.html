@@ -1,0 +1,41 @@
+<!--Inherits from navBase and overrides blocks-->
+
+{% extends "shop.html" %}
+
+{% block title %}Anthuriums{% endblock %}
+
+<!--Overrides the name of the page/category-->
+{% block categoryTitle %}
+<h1 class="title">Anthuriums</h1>
+{% endblock %}
+
+{% block productDisplay %}
+
+ <!--Displays the list of products from database and the page title-->
+
+<div class="shopContainer"></div>
+    <div class="flexContainer">
+        {% for product in products %}
+        {% if product.subSubCategory == "Anthurium" %}
+        <div class="flexBox">
+            <a href = "/product/{{product.id}}">
+            <div class="productImage">
+                <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
+            </div>
+            <div class="productName">
+                {{ product.name }}
+            </div>
+            <div class="productSummary">
+                {{ product.summary }}
+            </div>
+            <div class="productPrice">
+                ${{ product.price }}
+            </div>
+        </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>  
+</div>
+{% endblock %}
+

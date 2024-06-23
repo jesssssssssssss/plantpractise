@@ -1,0 +1,60 @@
+<!--Inherits from navBase and overrides blocks-->
+
+{% extends "shop.html" %}
+
+{% block title %}Flowers{% endblock %}
+
+<!--Overrides the name of the page/category-->
+{% block categoryTitle %}
+<h1 class="title">Flowers</h1>
+{% endblock %}
+
+<!--Category's sub navigation-->
+{% block subNav %}
+<div class="shopSubNav">
+
+    <ul class="subNavItems">
+
+        <li class="subNavItem"><a href="/shopPlantsFlowersAnthuriums">Anthuriums</a></li>
+
+        <li class="subNavItem"><a href="/shopPlantsFlowersOrchids">Orchids</a></li>
+
+        <li class="subNavItem"><a href="/shopPlantsFlowersPeaceLily">Peace Lily</a></li>
+
+        <li class="subNavItem"><a href="/shopPlantsFlowersOther">Other</a></li>
+
+    </ul>
+
+</div>
+{% endblock %}
+
+{% block productDisplay %}
+
+ <!--Displays the list of products from database and the page title-->
+
+<div class="shopContainer"></div>
+    <div class="flexContainer">
+        {% for product in products %}
+        {% if product.subCategory == "Flowers" %}
+        <div class="flexBox">
+            <a href = "/product/{{product.id}}">
+            <div class="productImage">
+                <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
+            </div>
+            <div class="productName">
+                {{ product.name }}
+            </div>
+            <div class="productSummary">
+                {{ product.summary }}
+            </div>
+            <div class="productPrice">
+                ${{ product.price }}
+            </div>
+        </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>  
+</div>
+{% endblock %}
+
