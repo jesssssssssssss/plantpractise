@@ -87,7 +87,7 @@
                     {% if accountDetails.paymentCardNo == None or accountDetails.paymentCardNo == "None" %}
                     <h2></h2>     
                     {% else %}
-                    <h2>Visa Mastercard </h2>
+                    <h2>Visa Debit </h2>
                     <h2>{{ masked_card }}</h2>
                     <h2>Exp: {{accountDetails.paymentCardExp }}</h2>
                     {% endif %}
