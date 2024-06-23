@@ -35,7 +35,7 @@
                 </div>
 
                 
-                {% if user.is_authenticated %} <!--NEW ADDITION-->
+                {% if user.is_authenticated %} 
                 <!--Nav icons-->
                 <div class="loggedSection">
                     <a class="loggedLinks" id="logout" href="/logout">Logout</a>  
@@ -51,8 +51,8 @@
                 </div>
                 {% else %}
                 <div class="loginSection">
-                    <a class="loginLinks" id="login" href="/login">Login</a> <!--NEW ADDITION-->
-                    <a class="loginLinks" id="signUp" href="/signUp">Sign up</a> <!--NEW ADDITION-->
+                    <a class="loginLinks" id="login" href="/login">Login</a> 
+                    <a class="loginLinks" id="signUp" href="/signUp">Sign up</a> 
                 </div>
                 {% endif %}
 
