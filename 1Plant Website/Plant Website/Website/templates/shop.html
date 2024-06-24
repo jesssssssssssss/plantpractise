@@ -25,23 +25,28 @@
     <ul class="shopNavItems">
 
         <li class="shopNavItem">
-            <a href="/shopPlants"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}">Plants</a>
+            <a href="/shopPlants"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"></a>
+            <a href="/shopPlants"><p>Plants</p></a>
         </li>
 
         <li class="shopNavItem">
-            <a href="/shopPotsPlanters"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}">Pots/Planters</a>
+            <a href="/shopPotsPlanters"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"></a>
+            <a href="/shopPotsPlanters"><p>Pots/Planters</p></a>
         </li>
 
         <li class="shopNavItem">
-            <a href="/shopPlantKits"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}">Plant Kits</a>
+            <a href="/shopPlantKits"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"></a>
+            <a href="/shopPlantKits"><p>Plant Kits</p></a>
         </li>
 
         <li class="shopNavItem">
-            <a href="/shopSuppliesAccessories"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}">Supplies/Ac</a>
+            <a href="/shopSuppliesAccessories"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"></a>
+            <a href="/shopSuppliesAccessories"><p>Supplies/Ac</p></a>
         </li>
 
         <li class="shopNavItem">
-            <a href="/shopGiftCards"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}">Gift Cards</a>
+            <a href="/shopGiftCards"><img class="navImage" height="70px" src="{{ url_for('static', filename='facebookIcon.png') }}"></a>
+            <a href="/shopGiftCards"><p>Gift Cards</p></a>
         </li>
 
     </ul>
@@ -59,7 +64,7 @@
 
 <!--Search bar-->
 
-<form method="POST">
+<form class="search" method="POST">
 
     {{ form.hidden_tag() }}
 
@@ -94,7 +99,7 @@
         <div class="flexBox">
             <a href = "/product/{{product.id}}">
             <div class="productImage">
-                <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
+                <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" alt="Plant image">
             </div>
             <div class="productName">
                 {{ product.name }}
