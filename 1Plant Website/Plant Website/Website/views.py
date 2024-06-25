@@ -294,7 +294,8 @@ def viewCart():
 
     cartItems = UserCart.query.filter_by(userId=current_user.id).all()
     totalPrice = sum(item.shopproduct .price * item.quantity for item in cartItems)
-    return render_template('viewCart.html', user=current_user, cartItems=cartItems, totalPrice=totalPrice) 
+    totalQuantity = sum(item.quantity for item in cartItems)
+    return render_template('viewCart.html', user=current_user, cartItems=cartItems, totalPrice=totalPrice, totalQuantity=totalQuantity) 
 
 @views.route('/aboutUs')
 def aboutUs():
@@ -336,10 +337,10 @@ def validate_payment(paymentCardNo, paymentCardCvc, paymentCardExp):
 
 @views.route('/editAccountDetails', methods=['GET', 'POST'])
 def editAccountDetails():
-       
+        
     if request.method == 'POST':
         user_id = current_user.id
-        account_details = AccountDetails.query.filter_by(userId=user_id).first()
+        accountDetails = AccountDetails.query.filter_by(userId=user_id).first()
 
         firstName = request.form['firstName']
         lastName = request.form['lastName']
@@ -393,18 +394,18 @@ def editAccountDetails():
      
             else:
 
-                account_details.firstName = firstName
-                account_details.lastName = lastName
-                account_details.email = email
-                account_details.mobileNo = mobileNo
-                account_details.addressHouseNo = addressHouseNo
-                account_details.addressStreetName = addressStreetName
-                account_details.addressSuburb = addressSuburb
-                account_details.addressCity = addressCity
-                account_details.addressPostCode = addressPostCode
-                account_details.paymentCardNo = paymentCardNo
-                account_details.paymentCardCvc = paymentCardCvc
-                account_details.paymentCardExp = paymentCardExp
+                accountDetails.firstName = firstName
+                accountDetails.lastName = lastName
+                accountDetails.email = email
+                accountDetails.mobileNo = mobileNo
+                accountDetails.addressHouseNo = addressHouseNo
+                accountDetails.addressStreetName = addressStreetName
+                accountDetails.addressSuburb = addressSuburb
+                accountDetails.addressCity = addressCity
+                accountDetails.addressPostCode = addressPostCode
+                accountDetails.paymentCardNo = paymentCardNo
+                accountDetails.paymentCardCvc = paymentCardCvc
+                accountDetails.paymentCardExp = paymentCardExp
 
                 db.session.commit()
                 flash('Account details updated successfully', category='success')

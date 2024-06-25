@@ -2,6 +2,7 @@
 {% block title %} Account Details {% endblock %}
 {% block content %}
 
+<br><br><br><br><br>
 <head>
     <meta charset="utf-8"/>
     <meta name ="viewport" content="width-device-width, initial-scale=1"/>
@@ -22,12 +23,6 @@
             {% endwith %}
         </div>
 
-
-
-
-
-
-
         <h1  align="center" class="myAccountHeading">My Account</h1>
 
         <div class="detailsFlex">
@@ -45,7 +40,13 @@
 
                     <div class="box">
                         <label for="lastName">Last Name:</label>
+                        {% if user.AccountDetails.lastName %}
                         <input type="text" id="lastName" name="lastName" value="{{ user.AccountDetails.lastName }}"/>
+                        {% else %}
+                        <input type="text" id="lastName" name="lastName" />
+                        {% endif %}
+                        
+
                     </div>
 
                 </div>
@@ -57,17 +58,13 @@
 
                 <div class="boxSingle">
                     <label for="mobileNo">Mobile Number:</label>
+                    {% if user.AccountDetails.mobileNo %}
                     <input type="text" id="mobileNo" name="mobileNo" value="{{ user.AccountDetails.mobileNo }}"/>
+                    {% else %}
+                    <input type="text" id="mobileNo" name="mobileNo"/>
+                    {% endif %}
                 </div>
             </div>
-
-
-
-
-
-
-
-
             
             <div class="personalDetailsFlex"> 
                 
@@ -77,12 +74,20 @@
 
                     <div class="box">
                         <label for="addressHouseNo">House/Unit number:</label>
-                        <input type="text" id="addressHouseNo" name="addressHouseNo" value="{{ user.AccountDetails.addressHouseNo }}"/>   
+                        {% if user.AccountDetails.addressHouseNo %}
+                        <input type="text" id="addressHouseNo" name="addressHouseNo" value="{{ user.AccountDetails.addressHouseNo }}"/> 
+                        {% else %}  
+                        <input type="text" id="addressHouseNo" name="addressHouseNo"/> 
+                       {% endif %}
                     </div>
 
                     <div class="box">
                         <label for="addressStreetName">Street Name:</label>
+                        {% if user.AccountDetails.addressStreetName %}
                         <input type="text" id="addressStreetName" name="addressStreetName" value="{{ user.AccountDetails.addressStreetName }}"/>
+                        {% else %}
+                        <input type="text" id="addressStreetName" name="addressStreetName"/>
+                       {% endif %}
                     </div>
 
                 </div>
@@ -92,30 +97,44 @@
 
                     <div class="box">
                         <label for="addressSuburb">Suburb:</label>
+                        {% if user.AccountDetails.addressSuburb %}
                         <input type="text" id="addressSuburb" name="addressSuburb" value="{{ user.AccountDetails.addressSuburb }}">
+                        {% else %}
+                        <input type="text" id="addressSuburb" name="addressSuburb">
+                        {% endif %}
                     </div>
 
                     <div class="box">
                         <label for="addressCity">City:</label>
+                        {% if user.AccountDetails.addressCity %}
                         <input type="text" id="addressCity" name="addressCity" value="{{ user.AccountDetails.addressCity }}">
+                        {% else %}
+                        <input type="text" id="addressCity" name="addressCity">
+                        {% endif %}
                     </div>
 
                 </div>
             
 
-               
-
-
+            
                 <div class="boxSingle">
                     <label for="addressPostCode">Postcode:</label>
+                    {% if user.AccountDetails.addressPostCode %}
                     <input type="text" id="addressPostCode" name="addressPostCode" value="{{ user.AccountDetails.addressPostCode }}">
+                    {% else %}
+                    <input type="text" id="addressPostCode" name="addressPostCode">
+                    {% endif %}
                 </div>
 
 
 
                 <div class="boxSingle">
                     <label for="paymentCardNo">Payment Information:</label>
-                    <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}">
+                    {% if user.AccountDetails.paymentCardNo %}
+                    <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.maskedCard }}">
+                    {% else %}
+                    <input type="text" id="paymentCardNo" name="paymentCardNo">
+                    {% endif %}
                 </div>
 
 
@@ -124,12 +143,20 @@
 
                     <div class="box">
                         <label for="paymentCardCvc">CVC:</label>
-                        <input type="text" id="paymentCardCvc" name="paymentCardCvc" value="{{ user.AccountDetails.paymentCardCvc }}">
+                        {% if user.AccountDetails.paymentCardCvc %}
+                        <input type="text" id="paymentCardCvc" name="paymentCardCvc" value="***">
+                        {% else %}
+                        <input type="text" id="paymentCardCvc" name="paymentCardCvc">
+                        {% endif %}
                     </div>
 
                     <div class="box">
                         <label for="paymentCardExp">Expiration Date:</label>
+                        {% if user.AccountDetails.paymentCardExp %}
                         <input type="text" id="paymentCardExp" name="paymentCardExp" value="{{ user.AccountDetails.paymentCardExp }}">
+                        {% else %}
+                        <input type="text" id="paymentCardExp" name="paymentCardExp">
+                        {% endif %}
                     </div>
 
                 </div>
