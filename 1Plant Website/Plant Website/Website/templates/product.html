@@ -4,10 +4,13 @@
  
  
 {% block content %}
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
-</head>
-<body>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
+
+
+
+
+
     <!-- insert breadcrumb nav here ? -->
 
     <div class="breadcrumbNav" align="center">
@@ -20,56 +23,78 @@
         {% endif %}
     </div>
 
+
+
+
+
     <div class="flexBox">
+
         <div class="productImage">
-            <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="400" height="350" alt="Plant image">
+            <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="400" alt="Plant image">
         </div>
+
         <div class="infoFlex">
-        <div class="productInfo">
-            {{ product.name }}
-            {% if product.summary == "None" or product.summary == None %} 
-            <br>
-            {% else %} 
-            <br> {{ product.summary }}
-            {% endif %}
-            <br>
-            <div class=productPrice> ${{ product.price }} </div>
-        </div>
-        <div class="productCart">
-            <p> Click and Collect available</p>
-            <p> Delivery available</p>
 
-            <div class="qtyAndBtn">
+            <div class="productInfo">
 
-                <div class="quantity">
-                    <select name="quantity" id="qty">
-                        <option value="1">Qty: 1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        
-                    </select>
+                <div class="productName">
+                    {{ product.name }}
                 </div>
-            
-                <form action="{{ url_for('views.addToCart', productId=product.id) }}" method="POST">
-                    <input type="hidden" name="quantity" id="qtySelect">
-                    <button class="addBtn" type="submit" onclick="updateQty()">
-                        Add to Cart
-                    </button>
-                </form>
+
+
+                <div class="productSummary">
+                    {% if product.summary == "None" or product.summary == None %} 
+                    
+                    {% else %} 
+
+                    {{ product.summary }}
+
+                    {% endif %}
+                </div>
+                
+                
+                <div class=productPrice> 
+                    ${{ product.price }} 
+                </div>
+
+
             </div>
 
-           
+            <div class="productCart">
+                <p> Click and Collect available</p>
+                <p> Delivery available</p>
+
+                <div class="qtyAndBtn">
+
+                    <div class="quantity">
+                        <select name="quantity" id="qty">
+                            <option value="1">Qty: 1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            
+                        </select>
+                    </div>
+                
+                    <form action="{{ url_for('views.addToCart', productId=product.id) }}" method="POST">
+                        <input type="hidden" name="quantity" id="qtySelect">
+                        <button class="addBtn" type="submit" onclick="updateQty()">
+                            Add to Cart
+                        </button>
+                    </form>
+                </div>
+
+            
 
 
-        </div>
+            </div>
         </div>
 
     </div>
@@ -86,6 +111,5 @@
         }
     </script>
 
-</body>
 
 {% endblock %}
