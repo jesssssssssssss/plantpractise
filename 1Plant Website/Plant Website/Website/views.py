@@ -294,7 +294,8 @@ def viewCart():
 
     cartItems = UserCart.query.filter_by(userId=current_user.id).all()
     totalPrice = sum(item.shopproduct .price * item.quantity for item in cartItems)
-    return render_template('viewCart.html', user=current_user, cartItems=cartItems, totalPrice=totalPrice) 
+    totalQuantity = sum(item.quantity for item in cartItems)
+    return render_template('viewCart.html', user=current_user, cartItems=cartItems, totalPrice=totalPrice, totalQuantity=totalQuantity) 
 
 @views.route('/aboutUs')
 def aboutUs():
