@@ -159,7 +159,17 @@ nav{
 }
 
 
-
+.message{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    color: #596C55;
+    font-size: 18pt;
+    list-style: none;
+    text-align: center;
+    padding: 0%;
+    margin-bottom: 5%;
+}
 
 
 

@@ -17,9 +17,10 @@
 
         <li class="subNavItem"><a href="/shopPlantsFlowers">Flowers</a></li>
 
+        <li class="subNavItem"><a href="/shopPlantsCactiSucculents">Cacti/Succulents</a></li>
+
         <li class="subNavItem"><a href="/shopPlantsFoliage">Foliage</a></li>
 
-        <li class="subNavItem"><a href="/shopPlantsCactiSucculents">Cati/Succulents</a></li>
     </ul>
 
 </div>
@@ -36,7 +37,7 @@
         <div class="flexBox">
             <a href = "/product/{{product.id}}">
             <div class="productImage">
-                <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
+                <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" alt="Plant image">
             </div>
             <div class="productName">
                 {{ product.name }}

@@ -74,13 +74,12 @@
 
 </form>
 
-<br>
 
 <!--Displaying flash messages-->
 
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-        <ul>
+        <ul class="message">
             {% for category, message in messages %}
                 <li class="{{ category }}">{{ message }}</li>
             {% endfor %}
@@ -119,6 +118,8 @@
         {% endfor %}
         {% endblock %}
     </div>  
+
+
 </div>
 
 {% endblock %}
