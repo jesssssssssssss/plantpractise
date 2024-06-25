@@ -1,13 +1,33 @@
 .breadcrumbNav{
-
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #596C55;
+    font-size: 18pt;
+    text-decoration: none;
+    
     margin-bottom: 5%;
-    
-    
 }
+
+.breadcrumbNav a{
+    color: #596C55;
+    text-decoration: none;
+}
+
+.breadcrumbNav a:hover{
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
 
 .flexBox {
     width: 100%;
-    height: auto;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
@@ -16,13 +36,56 @@
 
 }
 
+
+
+
 .productImage{
 
     margin-left: 10%;
     margin-right: 10%;
-    border: 1px solid black;
     
 }
+
+.productName{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #596C55;
+    font-size: 28pt;
+    text-decoration: none;
+
+    margin-bottom: 0%;
+}
+
+
+.productSummary{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    color: #596C55;
+    font-size: 20pt;
+    text-decoration: none;
+
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+
+
+.productPrice{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 16pt;
+    text-decoration: none;
+
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+
+
     
 .infoFlex{
 
@@ -39,16 +102,20 @@
     
 }
 
-.productPrice{
-
-    font-size:80%;
-}
-
 
 
 .productCart{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 16pt;
+    margin-top: 20%;
+}
 
-    margin-top: 50%;
+.productCart p{
+    margin: 0%;
+
 }
 
 .qtyAndBtn{
