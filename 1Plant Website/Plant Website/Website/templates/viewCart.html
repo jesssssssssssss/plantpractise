@@ -43,15 +43,32 @@
                     <div class="qty"> {{ item.quantity }} </div>
                     <p>Price: ${{ item.shopproduct.price * item.quantity }}</p>
                 </div>
+                
             {% endfor %}
+        
         </div>
-        
-        
-        
-        <h3>Total Price: ${{ totalPrice }}</h3>
-        <button><a href="/checkout">Checkout</a></button>
+        <hr>
+        <div class="cartSummaryContainer">
+            <div class="cartSummaryItems">
+                <p>{{ totalQuantity }} items</p>
+                <p>Shipping: </p>
+                <p><b>Total:</b> </p>
+            </div>
+            
+            <div class="cartSummaryItems2">
+                <p>${{ totalPrice }}</p>
+                <p><i>Free</i> </p>
+                <p><b>${{ totalPrice }}</b></p>
+            </div>
+        </div>
+
+        <form class="checkoutBtnLink" action="{{ url_for('views.checkout') }}">
+            <button class="checkoutBtn">Go to Checkout</button>
+        </form>
+
+
     {% else %}
-    <p>Your cart is empty.</p>
+        <p>Your cart is empty.</p>
     {% endif %}
 
     {% endblock %}
