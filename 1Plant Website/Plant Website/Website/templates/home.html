@@ -48,7 +48,7 @@
  
         <div class="productItem">
             <a href = "/product/{{product.id}}">
-                <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" height="150" alt="Plant image">
+                <img src="{{ url_for('static', filename='img/' + product.imageUrl) }}" width="200" alt="Plant image">
                 <h4>{{ product.name }}</h4>
                 <p>{{ product.summary }}</p>
                 <p>$ {{ product.price }}</p>
