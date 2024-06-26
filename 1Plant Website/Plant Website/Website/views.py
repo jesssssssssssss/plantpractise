@@ -122,12 +122,6 @@ def shopPlantsFoliage():
         
     return render_template('shopPlantsFoliage.html', user=current_user, products=products, form=form)
 
-
-
-
-
-
-
 @views.route('/shopPlantsFoliageCalathea', methods=['GET', 'POST'])
 def shopPlantsFoliageCalathea():
 
@@ -169,12 +163,6 @@ def shopPlantsFoliageTrailing():
     form, products = getShopProducts()
         
     return render_template('shopPlantsFoliageTrailing.html', user=current_user, products=products, form=form)
-
-
-
-
-
-
 
 @views.route('/shopPotsPlanters', methods=['GET', 'POST'])
 def shopProductsPotsPlanters():
@@ -376,7 +364,7 @@ def editAccountDetails():
                 flash("First name must be at least 2 characters.", category="error")
                 return redirect(url_for('views.editAccountDetails'))
             
-            elif len(lastName) < 2:
+            elif lastName and len(lastName) < 2:
                 flash("Last name must be at least 2 characters.", category="error")
                 return redirect(url_for('views.editAccountDetails'))
             
@@ -543,15 +531,9 @@ def payment(orderId):
  
     return render_template('payment.html', order=order, user=current_user, orderItems=orderItems, totalPrice=totalPrice, totalQuantity=totalQuantity)
 
- 
- 
-
-            # Save gift card details or process the payment '''
- 
-
-
 @views.route('/orderConfirmation/<int:orderId>', methods=['GET'])
 @login_required
 def orderConfirmation(orderId):
+
     order = Order.query.get_or_404(orderId)
     return render_template('orderConfirmation.html', order=order, user=current_user)
