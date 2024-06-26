@@ -19,26 +19,23 @@
     <form action="{{ url_for('views.checkout') }}" method="POST">
 
         <div class="checkoutDetails">
-        
-            <div class="contact">
-                <h1>Contact</h1>
+            
+            <h1>Contact</h1>
+
+            <div class="box">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value="{{ user.AccountDetails.email }}" required/>
             </div>
 
+            
 
-
-            <h1>Delivery</h1>
-            <label for="country">Country/Region:</label>
-            <input type="text" id="country" name="country" value="New Zealand" required/>
-
-            <div class="">
+            <div class="box">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="firstName" value="{{ user.AccountDetails.firstName }}" required/>   
             </div>
             
 
-            <div class="">
+            <div class="box">
                 <label for="lastName">Last Name:</label>
                 {% if user.AccountDetails.lastName %}
                 <input type="text" id="lastName" name="lastName" value="{{ user.AccountDetails.lastName }}"/>
@@ -48,18 +45,42 @@
             </div>
 
 
-            <div class="">
-                <p class="">Shipping Address:</p>
+
+
+
+
+
+
+            <h1>Delivery</h1>
+
+            <div class="box">
+                <label for="country">Country/Region:</label>
+                <input type="text" id="country" name="country" value="New Zealand" required/>
+            </div>
+
+
+            
+
+
+            <div class="box">
 
                 {% if user.AccountDetails.addressHouseNo %}
                 <label for="streetAddress">Street Address:</label> 
-                <input type="text" id="addressHouseNo" name="addressHouseNo" value="{{ user.AccountDetails.addressHouseNo }}"/>  
-                <input type="text" id="addressStreetName" name="addressStreetName" value="{{user.AccountDetails.addressStreetName }}"/> 
+
+                <div class="boxDouble">
+                    <input type="text" id="addressHouseNo" name="addressHouseNo" value="{{ user.AccountDetails.addressHouseNo }}"/>  
+                    <input type="text" id="addressStreetName" name="addressStreetName" value="{{user.AccountDetails.addressStreetName }}"/> 
+                </div>
+
+
+                
+
+
                 <label for="suburb">Suburb:</label> 
                 <input type="text" id="addressSuburb" name="addressSuburb" value="{{user.AccountDetails.addressSuburb }}" /> 
-                <label for="city">city:</label> 
+                <label for="city">City:</label> 
                 <input type="text" id="addressCity" name="addressCity" value="{{user.AccountDetails.addressCity }}"/> 
-                <label for="postCode">postCode:</label> 
+                <label for="postCode">Postcode:</label> 
                 <input type="text" id="addressPostCode" name="addressPostCode" value="{{user.AccountDetails.addressPostCode }}"/> 
                 {% else %}
                 <label for="streetAddress">Street Address:</label>
@@ -67,20 +88,20 @@
                 <input type="text" id="addressStreetName" name="addressStreetName"/> 
                 <label for="suburb">Suburb:</label> 
                 <input type="text" id="addressSuburb" name="addressSuburb" /> 
-                <label for="city">city:</label> 
+                <label for="city">City:</label> 
                 <input type="text" id="addressCity" name="addressCity" /> 
-                <label for="postCode">postCode:</label> 
+                <label for="postCode">PostCode:</label> 
                 <input type="text" id="addressPostCode" name="addressPostCode" />  {% endif %}
             </div>
 
-            <div class=""> 
+            <div class="box"> 
                 <label for="email">Delivery Instructions:</label>
                 <textarea type="text" id="deliveryInstr" name="deliveryInstr"></textarea> 
             </div>
 
         </div>
 
-        <button type="submit">Proceed to Payment</button>
+        <button id="payButton" type="submit">Proceed to Payment</button>
     </form>
 
 {% endblock %}
