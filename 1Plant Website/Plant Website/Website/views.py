@@ -444,15 +444,111 @@ def checkout():
             item.shopproduct.stock -= item.quantity
             db.session.delete(item)
 
+            # Update account details
+            firstName = request.form['firstName']
+            lastName = request.form['lastName']
+            email = request.form['email']
+            addressHouseNo = request.form['addressHouseNo']
+            addressStreetName = request.form['addressStreetName']
+            addressSuburb = request.form['addressSuburb']
+            addressCity = request.form['addressCity']
+            addressPostCode = request.form['addressPostCode']
+            is_valid_address, addresserrormsg = validate_address(addressHouseNo, addressStreetName, addressSuburb, addressCity, addressPostCode)
+            if not firstName:
+                flash("First name is required.", category="error")
+
+            elif not email:
+                flash("Email is required.", category="error")
+
+            else:
+
+                if len(firstName) < 2:
+                    flash("First name must be at least 2 characters.", category="error")
+                    return redirect(url_for('views.checkout'))
+                
+                elif len(lastName) < 2:
+                    flash("Last name must be at least 2 characters.", category="error")
+                    return redirect(url_for('views.checkout'))
+                
+                elif not is_valid_address:
+                    flash(addresserrormsg, category='error')
+                    return redirect(url_for('views.checkout')) 
+        
+                else:
+
+                    accountDetails.firstName = firstName
+                    accountDetails.lastName = lastName
+                    accountDetails.email = email
+                    accountDetails.addressHouseNo = addressHouseNo
+                    accountDetails.addressStreetName = addressStreetName
+                    accountDetails.addressSuburb = addressSuburb
+                    accountDetails.addressCity = addressCity
+                    accountDetails.addressPostCode = addressPostCode
+
         db.session.commit()
-        flash('Order placed successfully', category='success')
-        return redirect(url_for('views.orderConfirmation', orderId=newOrder.id))
+        flash('Delivery details saved', category='success')
+        return redirect(url_for('views.payment', orderId=newOrder.id))
 
     else:
         userId = current_user.id
         cartItems = UserCart.query.filter_by(userId=userId).all()
         totalAmount = sum(item.quantity * item.shopproduct.price for item in cartItems)
         return render_template('checkout.html', cartItems=cartItems, totalAmount=totalAmount, user=current_user)
+
+@views.route('/payment/<int:orderId>', methods=['GET', 'POST'])
+@login_required
+def payment(orderId):
+    
+    order = Order.query.get_or_404(orderId)
+    userId = current_user.id
+    user = User.query.filter_by(id=userId).first()
+    orderItems = OrderItem.query.filter_by(orderId=orderId).all()
+    totalPrice = sum(item.price * item.quantity for item in orderItems)
+    totalQuantity = sum(item.quantity for item in orderItems)
+
+    accountDetails = db.session.query(AccountDetails).filter_by(userId=userId).first()
+
+    if accountDetails.paymentCardNo:
+        masked_card = "**** **** **** " + accountDetails.paymentCardNo[-4:]
+    else:
+        masked_card = None
+
+    if request.method == 'POST':
+
+        paymentMethod = request.form.get('paymentMethod')
+        if paymentMethod == 'card':
+            # Validate and process card payment
+            paymentCardNo = request.form.get('paymentCardNo')
+            paymentCardExp = request.form.get('paymentCardExp')
+            paymentCardCvc = request.form.get('paymentCardCvc')
+            paymentCardName = request.form.get('paymentCardName')
+            # Perform necessary validation and processing for card payment
+            if not paymentCardNo or not paymentCardExp or not paymentCardCvc or not paymentCardName:
+                flash('Please fill in all card details.', category='error')
+                return redirect(url_for('views.payment', orderId=orderId))
+            # Save payment details or process the payment
+            
+        elif paymentMethod == 'giftcard':
+            # Validate and process gift card payment
+            giftCardNo = request.form.get('giftCardNo')
+            # Perform necessary validation and processing for gift card payment
+            if not giftCardNo:
+                flash('Please enter the gift card number.', category='error')
+                return redirect(url_for('views.payment', orderId=orderId))
+
+       
+
+        flash('Order placed successfully', category='success')
+        return redirect(url_for('views.orderConfirmation', orderId=orderId))
+ 
+    return render_template('payment.html', order=order, user=current_user, orderItems=orderItems, totalPrice=totalPrice, totalQuantity=totalQuantity)
+
+ 
+ 
+
+            # Save gift card details or process the payment '''
+ 
+
 
 @views.route('/orderConfirmation/<int:orderId>', methods=['GET'])
 @login_required

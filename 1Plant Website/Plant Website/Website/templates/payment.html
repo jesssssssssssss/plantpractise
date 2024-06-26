@@ -1,0 +1,114 @@
+{% extends "navBase.html" %}
+{% block title %}Payment{% endblock %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+</head>
+<body>
+
+    <br><br><br><br><br><br><br><br><br>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+        {% if messages %}
+            <ul class="message">
+                {% for category, message in messages %}
+                    <li class="{{category}}"> {{message}} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <h1>Checkout</h1>
+    <form action="{{ url_for('views.payment', orderId=order.id) }}" method="POST">
+        
+
+        <h2>Payment Method</h2>
+
+        <label for="paywCard">
+            <input type="radio" name="paymentMethod" id="paywCard" onchange="ShowHideDiv(this)" />
+            Credit/Debit Card
+        </label>
+        <br>
+        <label for="paywGiftCard">
+            <input type="radio" name="paymentMethod" id="paywGiftCard" onchange="ShowHideDiv(this)" />
+            Gift Card
+        </label>
+        <hr />
+        
+        <!-- Display text -->
+        <div style="display: none" data-target="#paywCard">
+            <label for="paymentCardNo">Card number:</label>
+            <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}" required/>
+            <label for="paymentCardExp">Card Exp:</label>
+            <input type="text" id="paymentCardExp" name="paymentCardExp" value="{{ user.AccountDetails.paymentCardExp }}" required/>
+            <label for="paymentCardCvc">Card CVC:</label>
+            <input type="text" id="paymentCardCvc" name="paymentCardCvc" value="{{ user.AccountDetails.paymentCardCvc }}" required/>
+            <label for="paymentCardName">Name on card:</label>
+            <input type="text" id="paymentCardName" name="paymentCardName" required/>
+        </div>
+
+
+        <div style="display: none" data-target="#paywGiftCard">
+            <label for="giftCardNo">Gift Card Number:</label>
+            <input type="text" id="giftCardNo" name="giftCardNo"/>
+        </div>
+        
+        <h2>Review Order</h2>
+
+        <div class="cartSummaryContainer">
+            <div class="cartSummaryItems">
+                <p>{{ totalQuantity }} items</p>
+                <p>Shipping: </p>
+                <p><b>Total:</b> </p>
+            </div>
+            
+            <div class="cartSummaryItems2">
+                <p>${{ totalPrice }}</p>
+                <p><i>Free</i> </p>
+                <p><b>${{ totalPrice }}</b></p>
+            </div>
+        </div>
+
+        <button type="submit">Pay now</button>
+    </form>
+
+
+    <script type="text/javascript">
+        function ShowHideDiv(elem) {
+            // Hide all messages
+            var messages = document.querySelectorAll('[data-target]');
+            messages.forEach(function(msg) {
+                msg.style.display = 'none';
+            });
+    
+            // Show the selected message
+            var target = document.querySelector('[data-target="#' + elem.id + '"]');
+            if (target) {
+                target.style.display = 'block';
+            }
+        }
+    
+        // Add event listeners after the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add change event listeners to radio buttons
+            var radioButtons = document.querySelectorAll('input[type="radio"][name="paymentMethod"]');
+            radioButtons.forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    ShowHideDiv(this);
+                });
+            });
+    
+            // Add submit event listener to the form
+            var form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    console.log('Form submission attempted');
+                    // Uncomment the next line to prevent form submission for testing
+                    // e.preventDefault();
+                });
+            }
+        });
+    </script>
+
+</body>
+{% endblock %}

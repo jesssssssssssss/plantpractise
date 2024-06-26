@@ -72,7 +72,7 @@
 
                 <div class="shipPayGroup">
                     <p class="detailsFlexLabel">Shipping Address:</p>
-                    {% if accountDetails.addressHouseNo == None or accountDetails.addressHouseNo == "None" %}
+                    {% if accountDetails.addressHouseNo == None or accountDetails.addressHouseNo == "None" or accountDetails.addressHouseNo == "" %}
                     <h2> - </h2>  
                     {% else %}
                     <h2>{{ accountDetails.addressHouseNo }} {{accountDetails.addressStreetName }}, {{accountDetails.addressSuburb }}, {{accountDetails.addressCity }} {{accountDetails.addressPostCode }}</h2>
@@ -84,8 +84,8 @@
 
                 <div class="shipPayGroup">
                     <p class="detailsFlexLabel">Payment Details:</p>
-                    {% if accountDetails.paymentCardNo == None or accountDetails.paymentCardNo == "None" %}
-                    <h2></h2>     
+                    {% if accountDetails.paymentCardNo == Null or accountDetails.paymentCardNo == "None" or accountDetails.paymentCardNo == "" %}
+                    <h2>---</h2>     
                     {% else %}
                     <h2>Visa Debit </h2>
                     <h2>{{ masked_card }}</h2>
