@@ -22,10 +22,13 @@
     {% if cartItems %}
         <div class="cart">   
             {% for item in cartItems %}
+            <div class="cartItemContain">
                 <div class="cartItem">
+                    <div class="btnFlex">
                     <form id="deleteOne" action="{{ url_for('views.removeFromCart', productId=item.productId) }}" method="POST">
-                        <button class="delBtn">Delete one</button>
+                        <button class="delBtn"><img class="binImage" height="50px" src="{{ url_for('static', filename='trashIcon.png') }}"></button>
                     </form>
+                    </div>
 
                     <div class="productImage">
                         <img src="{{ url_for('static', filename='img/' + item.shopproduct.imageUrl) }}" width="200" height="150" alt="Plant image">
@@ -40,9 +43,15 @@
                         {% endif %}
                     </div>
 
+                    <div class="qtyFlex">
                     <div class="qty"> {{ item.quantity }} </div>
-                    <p>Price: ${{ item.shopproduct.price * item.quantity }}</p>
+                    </div>
+                    <div class="priceFlex">
+                    <div class="price"><b>${{ item.shopproduct.price * item.quantity }}</b></div>
+                    </div>
+
                 </div>
+            </div>
                 
             {% endfor %}
         

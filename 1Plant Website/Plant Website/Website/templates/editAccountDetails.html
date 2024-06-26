@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <br><br><br><br><br>
     <form method="POST" action="{{ url_for('views.editAccountDetails') }}">
         <div  class="errormsg" >
             {% with messages = get_flashed_messages(with_categories=true) %} 
@@ -92,7 +91,6 @@
 
                 </div>
 
-
                 <div class="sideOnCategory">
 
                     <div class="box">
@@ -115,8 +113,6 @@
 
                 </div>
             
-
-            
                 <div class="boxSingle">
                     <label for="addressPostCode">Postcode:</label>
                     {% if user.AccountDetails.addressPostCode %}
@@ -126,8 +122,6 @@
                     {% endif %}
                 </div>
 
-
-
                 <div class="boxSingle">
                     <label for="paymentCardNo">Payment Information:</label>
                     {% if user.AccountDetails.paymentCardNo %}
@@ -136,8 +130,6 @@
                     <input type="text" id="paymentCardNo" name="paymentCardNo">
                     {% endif %}
                 </div>
-
-
 
                 <div class="sideOnCategory">
 
@@ -162,7 +154,9 @@
                 </div>
 
             </div>
+
         </div>
+        
         <br>
 
         <button type="submit" align="center" class="editButton">Update Details</button>
