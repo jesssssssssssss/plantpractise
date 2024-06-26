@@ -48,6 +48,7 @@
         <div class="cardDetails" style="display: none" data-target="#paywCard">
             <div class="box">
                 <label for="paymentCardNo">Card number:</label>
+                {% if user.AccountDetails.paymentCardNo %}
                 <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}" required/>
             </div>
 
@@ -65,6 +66,15 @@
                 <label for="paymentCardName">Name on card:</label>
                 <input type="text" id="paymentCardName" name="paymentCardName" required/>
             </div>
+
+            {% else %}
+            <input type="text" id="paymentCardNo" name="paymentCardNo" required/>
+            <label for="paymentCardExp">Card Exp:</label>
+            <input type="text" id="paymentCardExp" name="paymentCardExp" required/>
+            <label for="paymentCardCvc">Card CVC:</label>
+            <input type="text" id="paymentCardCvc" name="paymentCardCvc" required/>
+            {% endif %}
+            
 
         </div>
 
