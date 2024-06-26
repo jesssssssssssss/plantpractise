@@ -11,13 +11,9 @@
         {% endif %}
     {% endwith %}
     
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/accountDetails.css') }}">
 
-
         <h3 class="myAccountHeading" align="center" >My Account</h3>
-
-
 
         <div class="detailsMain">
 
@@ -25,67 +21,50 @@
 
                 <h1>Personal Details</h1>
 
-
-
                 <div class="detailsGroup">
                     <p class="detailsFlexLabel">Name:</p>
-                    {% if accountDetails.lastName == None or accountDetails.lastName == "None" %}    
+                    {% if accountDetails.lastName == None or accountDetails.lastName == "None" or accountDetails.lastName == "" %}    
                     <h2>{{ accountDetails.firstName }} </h2>
                     {% else %}
                     <h2>{{ accountDetails.firstName }} {{ accountDetails.lastName }}</h2>
                     {% endif %}
                 </div>
 
-                
-
-
                 <div class="detailsGroup">
                     <p class="detailsFlexLabel">Email Address:</p>
                     <h2>{{ accountDetails.email }} </h2>
-
-                    <!-- Add else command to validate email-->
                 </div>
-
-
 
                 <div class="detailsGroup">
                     <p class="detailsFlexLabel">Mobile:</p>
-                    {% if accountDetails.mobileNo == None or accountDetails.mobileNo == "None" %}
+                    {% if accountDetails.mobileNo == None %}
                     <h2> - </h2>      
                     {% else %}
                     <h2>{{ accountDetails.mobileNo }} </h2>
                     {% endif %}
                 </div>
 
-                
             </div>
-
-
-
 
 
             <div class="detailsGroupBody">
 
                 <h1>Shipping and Payment Details</h1>
 
-
-
                 <div class="shipPayGroup">
                     <p class="detailsFlexLabel">Shipping Address:</p>
-                    {% if accountDetails.addressHouseNo == None or accountDetails.addressHouseNo == "None" or accountDetails.addressHouseNo == "" %}
+                    {% if accountDetails.addressHouseNo == None or accountDetails.addressHouseNo == "" %}
                     <h2> - </h2>  
                     {% else %}
                     <h2>{{ accountDetails.addressHouseNo }} {{accountDetails.addressStreetName }}, {{accountDetails.addressSuburb }}, {{accountDetails.addressCity }} {{accountDetails.addressPostCode }}</h2>
                     {% endif %}
                 </div>
 
-                
-
 
                 <div class="shipPayGroup">
                     <p class="detailsFlexLabel">Payment Details:</p>
-                    {% if accountDetails.paymentCardNo == Null or accountDetails.paymentCardNo == "None" or accountDetails.paymentCardNo == "" %}
-                    <h2>---</h2>     
+                    {% if accountDetails.paymentCardNo == None or accountDetails.paymentCardNo == "" %}
+                    <h2> - </h2>     
                     {% else %}
                     <h2>Visa Debit </h2>
                     <h2>{{ masked_card }}</h2>
@@ -93,13 +72,9 @@
                     {% endif %}
                 </div>
 
-                
             </div>
-                
-
+            
         </div>
-
-
 
         <button type="button" align="center" class="editButton" id="editAccountDetails"><a href="/editAccountDetails">Edit</a></button>
        
