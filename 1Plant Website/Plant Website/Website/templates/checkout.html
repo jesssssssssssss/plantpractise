@@ -38,15 +38,22 @@
                 <input type="email" id="email" name="email" placeholder="{{ user.AccountDetails.email }}" required/>
             </div>
 
+
+
             <h1>Delivery</h1>
-            <label for="Country">Country/Region:</label>
-            <input type="text" id="email" name="email" placeholder="New Zealand" required/>
+
+            <div>
+                <label for="country">Country/Region:</label>
+                <input type="text" id="country" name="country" placeholder="New Zealand" required/>
+            </div>
+
 
             <div class="">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="firstName" value="{{ user.AccountDetails.firstName }}" required/>   
             </div>
             
+
             <div class="">
                 <label for="lastName">Last Name:</label>
                 {% if user.AccountDetails.lastName %}
@@ -56,10 +63,14 @@
                 {% endif %}
             </div>
 
-             <div class="">
+
+            <div class="">
                 <p class="">Shipping Address:</p>
+
                 {% if user.AccountDetails.addressHouseNo %}
+
                 <label for="streetAddress">Street Address:</label>
+
                 <input type="text" id="addressHouseNo" name="addressHouseNo" value="{{ user.AccountDetails.addressHouseNo }}"/>  
                 <input type="text" id="addressStreetName" name="addressStreetName" value="{{user.AccountDetails.addressStreetName }}"/> 
                 <label for="city">city:</label> 
