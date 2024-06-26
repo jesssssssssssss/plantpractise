@@ -32,7 +32,7 @@
     flex-direction: row;
     box-sizing: border-box;
     margin: 0;
-    padding: 10px;
+
 
 }
 
@@ -122,18 +122,93 @@
 
     display:flex;
     flex-direction: row;
-    
+    margin-top: 5%;
     
 }
 
-.quantity{
 
-    margin: 0% 0% 5% 0%;
+
+.qtyAndBtn button{
+    border: 3px solid #596C55;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+    width: 120%;
+
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 12pt;
+}
+
+
+
+.qtyAndBtn button:hover{
+    background-color: #596C55;
+    border: 3px solid #596C55;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+    transition: 0.2s ease-in-out;
+    width: 120%;
+
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    font-size: 12pt;
+}
+
+
+.quantity{
+    margin-right: 5%;
+}
+
+
+.quantity select{
+    border: 3px solid #596C55;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 12pt;
 }
 
 .addBtn {
-
+    
     margin:0%;
     padding: 0%;
     border: 1px solid black;
 }
+
+
+
+.description{
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+.description h1{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #596C55;
+    font-size: 28pt;
+    text-decoration: none;
+}
+
+
+.description p{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 16pt;
+    text-decoration: none;
+}
+
+
+
