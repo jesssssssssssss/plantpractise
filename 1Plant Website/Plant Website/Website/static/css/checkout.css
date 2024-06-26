@@ -1,0 +1,27 @@
+.header{
+    font-family: abril-titling, serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #596C55;
+    font-size: 35pt;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+
+
+
+.checkoutDetails{
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
+
+.checkoutDetails h1{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #596C55;
+    font-size: 20pt;
+}
