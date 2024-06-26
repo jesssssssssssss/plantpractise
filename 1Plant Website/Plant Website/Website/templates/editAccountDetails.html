@@ -2,7 +2,6 @@
 {% block title %} Account Details {% endblock %}
 {% block content %}
 
-<br><br><br><br><br>
 <head>
     <meta charset="utf-8"/>
     <meta name ="viewport" content="width-device-width, initial-scale=1"/>
@@ -10,6 +9,7 @@
 </head>
 
 <body>
+    <br><br><br><br><br>
     <form method="POST" action="{{ url_for('views.editAccountDetails') }}">
         <div  class="errormsg" >
             {% with messages = get_flashed_messages(with_categories=true) %} 
@@ -161,9 +161,6 @@
 
                 </div>
 
-
-
-                
             </div>
         </div>
         <br>
