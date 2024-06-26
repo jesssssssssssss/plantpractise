@@ -1,12 +1,9 @@
 {% extends "navBase.html" %}
 {% block title %}Payment{% endblock %}
 {% block content %}
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
-</head>
-<body>
 
-    <br><br><br><br><br><br><br><br><br>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+
 
     {% with messages = get_flashed_messages(with_categories=true) %} 
         {% if messages %}
@@ -18,31 +15,58 @@
         {% endif %}
     {% endwith %}
 
-    <h1>Checkout</h1>
+
+
+
+    <h1 class="header">Checkout</h1>
+
+
+
+
     <form action="{{ url_for('views.payment', orderId=order.id) }}" method="POST">
         
 
-        <h2>Payment Method</h2>
+        <h2 class="subHead">Payment Method</h2>
 
-        <label for="paywCard">
-            <input type="radio" name="paymentMethod" id="paywCard" onchange="ShowHideDiv(this)" />
-            Credit/Debit Card
-        </label>
-        <br>
-        <label for="paywGiftCard">
-            <input type="radio" name="paymentMethod" id="paywGiftCard" onchange="ShowHideDiv(this)" />
-            Gift Card
-        </label>
-        <hr />
+
+        <div class="cardType">
+
+            <label for="paywCard">
+                <input type="radio" name="paymentMethod" id="paywCard" onchange="ShowHideDiv(this)" />
+                Credit/Debit Card
+            </label>
+
+            <label for="paywGiftCard">
+                <input type="radio" name="paymentMethod" id="paywGiftCard" onchange="ShowHideDiv(this)" />
+                Gift Card
+            </label>
+
+        </div>
         
-        <div style="display: none" data-target="#paywCard">
-            <label for="paymentCardNo">Card number:</label>
-            {% if user.AccountDetails.paymentCardNo %}
-            <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}" required/>
-            <label for="paymentCardExp">Card Exp:</label>
-            <input type="text" id="paymentCardExp" name="paymentCardExp" value="{{ user.AccountDetails.paymentCardExp }}" required/>
-            <label for="paymentCardCvc">Card CVC:</label>
-            <input type="text" id="paymentCardCvc" name="paymentCardCvc" value="{{ user.AccountDetails.paymentCardCvc }}" required/>
+        
+        <!-- Display text -->
+        <div class="cardDetails" style="display: none" data-target="#paywCard">
+            <div class="box">
+                <label for="paymentCardNo">Card number:</label>
+                {% if user.AccountDetails.paymentCardNo %}
+                <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}" required/>
+            </div>
+
+            <div class="box">
+                <label for="paymentCardExp">Card Exp:</label>
+                <input type="text" id="paymentCardExp" name="paymentCardExp" value="{{ user.AccountDetails.paymentCardExp }}" required/>
+            </div>
+
+            <div class="box">
+                <label for="paymentCardCvc">Card CVC:</label>
+                <input type="text" id="paymentCardCvc" name="paymentCardCvc" value="{{ user.AccountDetails.paymentCardCvc }}" required/>
+            </div>
+
+            <div class="box">
+                <label for="paymentCardName">Name on card:</label>
+                <input type="text" id="paymentCardName" name="paymentCardName" required/>
+            </div>
+
             {% else %}
             <input type="text" id="paymentCardNo" name="paymentCardNo" required/>
             <label for="paymentCardExp">Card Exp:</label>
@@ -50,17 +74,28 @@
             <label for="paymentCardCvc">Card CVC:</label>
             <input type="text" id="paymentCardCvc" name="paymentCardCvc" required/>
             {% endif %}
-            <label for="paymentCardName">Name on card:</label>
-            <input type="text" id="paymentCardName" name="paymentCardName" required/>
+            
+
         </div>
 
 
-        <div style="display: none" data-target="#paywGiftCard">
-            <label for="giftCardNo">Gift Card Number:</label>
-            <input type="text" id="giftCardNo" name="giftCardNo"/>
+
+
+
+        <div class="box" style="display: none" data-target="#paywGiftCard">
+
+            <div class="cardDetails">
+
+                <label for="giftCardNo">Gift Card Number:</label>
+
+                <input type="text" id="giftCardNo" name="giftCardNo"/>
+
+            </div>
+            
         </div>
+
         
-        <h2>Review Order</h2>
+        <h2 class="subHead">Review Order</h2>
 
         <div class="cartSummaryContainer">
             <div class="cartSummaryItems">
@@ -76,7 +111,14 @@
             </div>
         </div>
 
-        <button type="submit">Pay now</button>
+        
+
+
+        
+        <div class="buttonContainer">
+            <button id="payButton" type="submit">Pay now</button>
+        </div>
+
     </form>
 
 
@@ -117,5 +159,5 @@
         });
     </script>
 
-</body>
+
 {% endblock %}
