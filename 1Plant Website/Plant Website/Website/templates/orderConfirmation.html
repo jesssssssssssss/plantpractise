@@ -1,23 +1,31 @@
 {% extends "navBase.html" %}
 {% block title %}Order Confirmation{% endblock %}
 {% block content %}
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/orderConfirmation.css') }}">
-</head>
-<body>
 
-    <div class="orderCompleteFlex">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/orderConfirmation.css') }}">
+
+
+<div class="orderCompleteFlex">
     <div class="orderCompleteImg">
-    <img class="orderConfirm" height="70px" src="{{ url_for('static', filename='giftCardNav.png') }}"></div>
-    <div class="orderCompleteHd"><h1>Order Complete</h1></div>
-    <div class="orderCompletId"><h2>Order ID: {{ order.id }}</h2></div>
-    <div class="orderCompleteMsg"><p>We've sent you an email with all the details of your order.<br> 
-        Thank you for shopping with us, we hope to see you again!</p></div>
+        <img class="orderConfirm" height="70px" src="{{ url_for('static', filename='giftCardNav.png') }}">
     </div>
- 
-    
-    <div class="orderCompleteBtn"><button class="shopBtn"><a  href="/shop">Shop</a></button></div>
-    
 
-</body>
+    <div class="orderCompleteHd">
+        <h1>Order Complete</h1>
+    </div>
+
+    <div class="orderCompletId">
+        <h2>Order ID: {{ order.id }}</h2>
+    </div>
+
+    <div class="orderCompleteMsg">
+        <p>We've sent you an email with all the details of your order.<br> 
+        Thank you for shopping with us, we hope to see you again!</p>
+    </div>
+</div>
+
+
+<div class="buttonContainer"><button id="shopBtn"><a  href="/shop">Shop</a></button></div>
+
+
 {% endblock %}
