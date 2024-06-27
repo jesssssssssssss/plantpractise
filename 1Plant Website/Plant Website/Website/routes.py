@@ -32,3 +32,5 @@ def contact():
             return render_template('contact.html', success=True, form=form, user=current_user)
     elif request.method == 'GET':
         return render_template('contact.html', form=form, user=current_user)
+    
+    

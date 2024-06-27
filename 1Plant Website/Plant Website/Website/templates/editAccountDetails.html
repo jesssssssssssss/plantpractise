@@ -125,9 +125,9 @@
                 <div class="boxSingle">
                     <label for="paymentCardNo">Payment Information:</label>
                     {% if user.AccountDetails.paymentCardNo %}
-                    <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.maskedCard }}">
+                    <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ maskedCard }}" placeholder="{{ maskedCard }}">
                     {% else %}
-                    <input type="text" id="paymentCardNo" name="paymentCardNo">
+                    <input type="text" id="paymentCardNo" name="paymentCardNo"> 
                     {% endif %}
                 </div>
 

@@ -301,12 +301,12 @@ def accountDetails():
     accountDetails = db.session.query(AccountDetails).filter_by(userId=userId).first()
 
     if accountDetails.paymentCardNo:
-        masked_card = "**** **** **** " + accountDetails.paymentCardNo[-4:]
+        maskedCard = "**** **** **** " + accountDetails.paymentCardNo[-4:]
     else:
-        masked_card = None
+        maskedCard = None
     
 
-    return render_template('accountDetails.html', user=user, accountDetails=accountDetails, masked_card=masked_card)
+    return render_template('accountDetails.html', user=user, accountDetails=accountDetails, maskedCard=maskedCard)
 
 # This is defining functions that validate address and payment details, ensuring they're entered completely. These functions
 #  will be called in the "editAccountDetails" function beneath. 
@@ -326,9 +326,14 @@ def validate_payment(paymentCardNo, paymentCardCvc, paymentCardExp):
 @views.route('/editAccountDetails', methods=['GET', 'POST'])
 def editAccountDetails():
         
+    user_id = current_user.id
+    accountDetails = AccountDetails.query.filter_by(userId=user_id).first()
+
+    if accountDetails.paymentCardNo:
+        maskedCard = "**** **** **** " + accountDetails.paymentCardNo[-4:]
+
     if request.method == 'POST':
-        user_id = current_user.id
-        accountDetails = AccountDetails.query.filter_by(userId=user_id).first()
+        
 
         firstName = request.form['firstName']
         lastName = request.form['lastName']
@@ -401,7 +406,7 @@ def editAccountDetails():
         
     
     else:
-        return render_template("editAccountDetails.html", user=current_user) 
+        return render_template("editAccountDetails.html", user=current_user, maskedCard=maskedCard) 
 
 
 @views.route('/checkout', methods=['GET', 'POST'])
@@ -497,9 +502,9 @@ def payment(orderId):
     accountDetails = db.session.query(AccountDetails).filter_by(userId=userId).first()
 
     if accountDetails.paymentCardNo:
-        masked_card = "**** **** **** " + accountDetails.paymentCardNo[-4:]
+        maskedCard = "**** **** **** " + accountDetails.paymentCardNo[-4:]
     else:
-        masked_card = None
+        maskedCard = None
 
     if request.method == 'POST':
 
@@ -529,7 +534,7 @@ def payment(orderId):
         flash('Order placed successfully', category='success')
         return redirect(url_for('views.orderConfirmation', orderId=orderId))
  
-    return render_template('payment.html', order=order, user=current_user, orderItems=orderItems, totalPrice=totalPrice, totalQuantity=totalQuantity)
+    return render_template('payment.html', order=order, user=current_user, orderItems=orderItems, totalPrice=totalPrice, totalQuantity=totalQuantity, maskedCard=maskedCard)
 
 @views.route('/orderConfirmation/<int:orderId>', methods=['GET'])
 @login_required
