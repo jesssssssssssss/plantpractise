@@ -15,19 +15,11 @@
         {% endif %}
     {% endwith %}
 
-
-
-
     <h1 class="header">Checkout</h1>
 
-
-
-
     <form action="{{ url_for('views.payment', orderId=order.id) }}" method="POST">
-        
 
         <h2 class="subHead">Payment Method</h2>
-
 
         <div class="cardType">
 
@@ -43,13 +35,11 @@
 
         </div>
         
-        
-        <!-- Display text -->
         <div class="cardDetails" style="display: none" data-target="#paywCard">
             <div class="box">
                 <label for="paymentCardNo">Card number:</label>
                 {% if user.AccountDetails.paymentCardNo %}
-                <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ user.AccountDetails.paymentCardNo }}" required/>
+                <input type="text" id="paymentCardNo" name="paymentCardNo" value="{{ maskedCard }}" required/>
             </div>
 
             <div class="box">
