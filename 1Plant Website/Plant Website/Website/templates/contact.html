@@ -4,14 +4,13 @@
 {% block content %}
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
-<div class="pageContent">
+
     <div  class="formHead">
         <h1>Contact</h1>
 
         <!--Success Message-->
-        {% if success %}
-            <p>Thank you for your message. We'll get back to you shortly.</p>
-        {% else %}
+
+
             <p>To get in touch with us regarding information or queries, please fill in the information below.</p>
     </div>
 
@@ -64,6 +63,6 @@
     </form>
 
 
-    {% endif %}
-</div>
+
+
 {% endblock %}
