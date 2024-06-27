@@ -1,7 +1,22 @@
-.pageHeader{
-
-    padding-top: 3.5%;
+.pageHeader h1{
+    font-family: abril-titling, serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #596C55;
+    font-size: 35pt;
+    margin-bottom: 5%;
+    text-align: center;
     
+}
+
+
+
+p{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 18pt;
 }
 
 .cart{
@@ -49,9 +64,24 @@
 
 .itemTitle{
 
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #596C55;
+    font-size: 16pt;
+    text-decoration: none;
     margin-left:10%;
     max-width:60%;
 
+}
+
+
+.subHead{
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #596C55;
+    font-size: 20pt;
 }
 
 .qty{
@@ -61,9 +91,13 @@
     height: 30px;
     line-height: 30px;
     border-radius: 50%;
-    font-size: 20px;
-    color: black;
-    border: 1px solid black;
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #596C55;
+    font-size: 16pt;
+    text-decoration: none;
+    border: 2px solid #596C55;
     text-align: center;
     
 }
@@ -71,6 +105,12 @@
  
 
 .price{
+
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #596C55;
+    font-size: 16pt;
 
     margin-left:50%;
 
@@ -98,6 +138,7 @@
     flex-direction: row;
     justify-content: center;
     width:auto;
+    margin-top: 10%;
 }
 
 .cartSummaryItems{
@@ -149,6 +190,7 @@
     display: flex;
     justify-content: center;
 }
+
 
 
 

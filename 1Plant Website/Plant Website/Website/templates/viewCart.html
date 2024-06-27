@@ -2,13 +2,15 @@
 {% block title %}Cart{% endblock %}
 {% block content %}
 
-<div class=pageHeader><h1>Your Cart</h1></div>
+<div class=pageHeader>
+    <h1>Your Cart</h1>
+</div>
 
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/viewCart.css') }}">
-</head>
 
-<body>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/viewCart.css') }}">
+
+
+
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             <ul class="message">
@@ -26,7 +28,7 @@
                 <div class="cartItem">
                     <div class="btnFlex">
                     <form id="deleteOne" action="{{ url_for('views.removeFromCart', productId=item.productId) }}" method="POST">
-                        <button class="delBtn"><img class="binImage" height="50px" src="{{ url_for('static', filename='trashIcon.png') }}"></button>
+                        <button class="delBtn"><img class="binImage" height="40px" src="{{ url_for('static', filename='trashIcon.png') }}"></button>
                     </form>
                     </div>
 
@@ -35,7 +37,7 @@
                     </div>
 
                     <div class="itemTitle">
-                        <h2>{{ item.shopproduct.name }}</h2>
+                        <h2 class="subHead">{{ item.shopproduct.name }}</h2>
                         {% if item.shopproduct.summary %}
                         {{item.shopproduct.summary}}
                         {% else %}
@@ -56,7 +58,8 @@
             {% endfor %}
         
         </div>
-        <hr>
+
+        
         <div class="cartSummaryContainer">
             <div class="cartSummaryItems">
                 <p>{{ totalQuantity }} items</p>
@@ -71,6 +74,8 @@
             </div>
         </div>
 
+
+        
         <form class="checkoutBtnLink" action="{{ url_for('views.checkout') }}">
             <button class="checkoutBtn">Go to Checkout</button>
         </form>
@@ -80,4 +85,3 @@
     {% endif %}
 
     {% endblock %}
-</body>
